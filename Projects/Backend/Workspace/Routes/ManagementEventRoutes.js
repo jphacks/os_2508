@@ -6,6 +6,7 @@ const cookieObserver = require('../Tools/CookieObserver');
 
 // ルータを使うのに必要な処理
 const router = express.Router();
+
 const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
@@ -23,6 +24,7 @@ dotenv.config({ path: path.join(__dirname, "..", ".env") });
 router.get("/", cookieObserver(), async (req, res) => {
     // jsonウェブトークン
     const token = req.cookies.jwtToken;
+
     if (!token) return res.status(401).json({ message: "No token provided." });
     try {
         // デコードしたjsonウェブトークン
@@ -51,11 +53,12 @@ router.get("/Contents", cookieObserver(), async (req, res) => {
         // デコードしたjsonウェブトークン
         const decodedToken = jwt.verify(token, LOGIN_SECRET);
 
-        // jsonウェブトークンからユーザーID
+        // jsonウェブトークンから得たユーザーID
         const userId = decodedToken.userId;
 
         // ユーザーIDで検索したユーザー情報
         const [userInfo] = await db.query("SELECT isStaff FROM AttendLog WHERE UserID = ?", [userId]);
+
         if (parseInt(userInfo[0].isStaff) === 1) {
             // クリエパラメーターから取得したイベントID
             const eventId = req.params.EventID;
@@ -76,7 +79,10 @@ router.post("/Update", cookieObserver(), async (req, res) => {
     if (!token) return res.status(401).json({ message: 'No token provided.' });
 
     try {
+        // デコードしたjsonウェブトークン
         const decodedToken = jwt.verify(token, LOGIN_SECRET);
+
+        // jsonウェブトークンから得たユーザーID
         const userId = decodedToken.userId;
 
         // ユーザーIDで検索したユーザー情報
