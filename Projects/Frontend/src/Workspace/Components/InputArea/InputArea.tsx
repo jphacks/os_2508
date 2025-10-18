@@ -8,7 +8,7 @@ type InputArea = {
 }
 const InputArea = ({row, col, placeholder}: InputArea) => {
     return (
-        <textarea className="inputArea" rows={row} cols={col} placeholder={placeholder} />
+        <textarea className="InputArea"  rows={row} cols={col} placeholder={placeholder} />
     )
 }
 export default InputArea;
