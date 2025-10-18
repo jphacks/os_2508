@@ -14,6 +14,18 @@ app.use(express.urlencoded({ extended: true })); // POSTされたformの内容�
 // AuthRouting
 const authRoutes = require('./Routes/AuthRoutes');
 app.use("/", authRoutes);
+// RegisterRouting
+const registerRoutes = require('./Routes/RegisterRoutes');
+app.use("/Register", registerRoutes);
+// LoginRouting
+const loginRoutes = require('./Routes/LoginRoutes');
+app.use("/Login", loginRoutes);
+// ProfileRouting
+const profileRoutes = require('./Routes/ProfileRoutes');
+app.use("/Profile", profileRoutes);
+// EventRouting
+const eventRoutes = require('./Routes/EventRoutes');
+app.use("/Event", eventRoutes);
 
 // ページの配信(Reactでbuild予定)
 app.use(express.static(path.join(__dirname, "..", "..", "..", "Frontend", "dist")));

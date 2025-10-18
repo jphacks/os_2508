@@ -28,7 +28,7 @@ function Register() {
                     </div>
                 </div>
                 <div className="RegisterHomeButton">
-                    <BaseButton label="Home" onClick={() => window.location.href = "/Home"} />
+                    <BaseButton label="Home" onClick={() => window.location.href = "/Home"} type="button"/>
                 </div>
             </div>
         </form>

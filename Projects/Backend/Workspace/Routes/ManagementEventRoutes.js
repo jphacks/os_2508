@@ -11,7 +11,7 @@ const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
 const jwt = require("jsonwebtoken");
-const { db } = require("../Tools/DB");
+const { db } = require("../Tools/db");
 
 // cookieを使うのに必要な処理
 const cookieParser = require("cookie-parser");

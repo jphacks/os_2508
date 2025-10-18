@@ -1,8 +1,7 @@
 // CookieObserverを通すのに必要な処理
 const CookieObserver = require('../Tools/CookieObserver');
-
-// ルータを使うのに必要な処理
-const { router } = require('express');
+const express = require('express');
+const router = express.Router();
 
 // cookieを使うのに必要な処理
 const cookieParser = require('cookie-parser');

@@ -2,17 +2,18 @@ const express = require('express');
 const path = require('path');
 const dotenv = require("dotenv");
 const { db } = require("../Tools/db");
-const CookieObserver = require('../Tools/CookieObservre');
+const CookieObserver = require('../Tools/CookieObserver');
+const argon2 = require('argon2');
 
 const router = express.Router();
 dotenv.config({ path: path.join(__dirname, "..", ".env")});
 
 router.get('/', CookieObserver(), (req, res) => {
     console.log("Register-API is running");
-    res.sendFile(path.join(__dirname, "..", "..", "..", "..", "Frontend", "react-files", "dist", "index.html"));
+    res.sendFile(path.join(__dirname, "..", "..", "..", "..", "Frontend", "dist", "index.html"));
 });
 
-router.port('/Submit', CookieObserver(), async(req, res) =>{
+router.post('/Submit', CookieObserver(), async(req, res) =>{
     console.log("Submit-API is running");
     try{
         const {nickname, birth, userId, password, gradYear, organization, comment} = req.body;
@@ -37,6 +38,7 @@ router.port('/Submit', CookieObserver(), async(req, res) =>{
         }
 
         //Password+PapperでHash化
+        const passwordWithPepper = password + pepper;
         const hashedPassword = await argon2.hash(passwordWithPepper, {
             type: argon2.argon2id,
             memoryCost: 2 ** 16,   // 推奨: 64MB
@@ -44,20 +46,20 @@ router.port('/Submit', CookieObserver(), async(req, res) =>{
             parallelism: 1         // 並列数
         });
 
-        //Hash化したPasswordをIdentifyテーブルに追加
-        await db.query(
-            "INSERT INTO Idetntify (UserID, Password) VALUES (?, ?)",
-            [userId, hashedPassword]
-        );
-
         //Birthの表記変換
         const birthday = birth.replace(/\//g, '-');
         const isorganizer = null;
         
         //Password以外の情報をProfilesテーブルに追加 
         await db.query(
-            "INSERT INTO Profiles (UserID, Nickname, Graduation, Organization, isOrganizer, Birthday, Comment) VALUES(?,?,?,?,?,?,?)"
+            "INSERT INTO Profiles (UserID, Nickname, Graduation, Organization, isOrganizer, Birthday, Comment) VALUES(?,?,?,?,?,?,?)",
             [userId, nickname, gradYear, organization, isorganizer, birthday, comment]
+        );
+
+        //Hash化したPasswordをIdentifyテーブルに追加
+        await db.query(
+            "INSERT INTO Identify (UserID, Password) VALUES (?, ?)",
+            [userId, hashedPassword]
         );
 
         //登録成功 → Homeへリダイレクト
