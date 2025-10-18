@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const InverseCookieObserver = require('../Tools/InverseCookieObserver');
+const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: path.join(__dirname, "..", ".env") });
 
 router.get("/", InverseCookieObserver(), (req, res) => {
     // 0. Startup Log
@@ -20,9 +24,9 @@ router.post("/CheckAuth", InverseCookieObserver(), (req, res) => {
     const INVITED_KEY = process.env.INVITED_KEY    // .envから取得した招待コード
 
     // 2. それぞれを比較する
-    if (invitedKey === INVITED_KEY) {
+    if (invitedKey == INVITED_KEY) {
         // VerifySuccessLog
-        console.log("InvitedKey is verified!");
+        console.log(`InvitedKey is verified!: ${invitedKey} <=> ${INVITED_KEY}`);
         
         // statusを準備
         const status = { status: "success" };

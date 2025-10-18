@@ -8,7 +8,7 @@ function Auth() {
             <div className="AuthBackground">
                 <div className="AuthBox">
                     <div className="AuthInvite">
-                        <InputField name="invitedkey" type="password" placeholder="invite code" />
+                        <InputField name="invitedKey" type="password" placeholder="invite code" />
                     </div>
                     <div className="AuthSubmit">
                         <ConfirmButton type="submit" label="submit" />

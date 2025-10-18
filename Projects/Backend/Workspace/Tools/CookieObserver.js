@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 function CookieObserver(){
     return (req, res, next) =>{
         // 0. Startup Log

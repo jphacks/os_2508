@@ -10,18 +10,18 @@ app.use(express.json()); // json解析してreq.bodyに自動的に格納する�
 app.use(cookieParser()); // cookie解析してreq.cookiesに自動的に格納する。
 app.use(express.urlencoded({ extended: true })); // POSTされたformの内容を解析してreq.bodyに自動的に格納する。
 
-// ページの配信(Reactでbuild予定)
-app.use(express.static(path.join(__dirname, "..", "..", "..", "Frontend", "dist")));
-
 // ルーティング(申請してくれたら追加します)
 // AuthRouting
 const authRoutes = require('./Routes/AuthRoutes');
-app.use("/Auth", authRoutes);
+app.use("/", authRoutes);
+
+// ページの配信(Reactでbuild予定)
+app.use(express.static(path.join(__dirname, "..", "..", "..", "Frontend", "dist")));
 
 // HomeRouting
 app.get("/Home", CookieObserver(), (req, res) => {
     // 0. Startup Log
-    console.log("/Auth/CheckAuth-API is running!");
+    console.log("/Home-API is running!");
 
     // 1. 画面遷移
     return res.sendFile(path.join(__dirname, "..", "..", "..", "Frontend", "dist", "index.html"));
