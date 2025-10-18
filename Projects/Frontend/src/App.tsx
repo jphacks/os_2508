@@ -1,28 +1,29 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Home from "./Workspace/pages/Home/Home";
-//import Auth from "./Workspace/Pages/Auth/Auth";
-// import Register from "./Workspace/pages/Register/Register"; 
+import Home from "./Workspace/Pages/Home/Home";
+import Auth from "./Workspace/Pages/Auth/Auth";
+import Register from "./Workspace/Pages/Register/Register"; 
 import Profile from "./Workspace/Pages/Profile/Profile"; 
-import EventDetail from "./Workspace/Pages/EventDetail/EventDetail";
+// import Application from "./Workspace/pages/Application/Application";
 // import Operation from "./Workspace/pages/Operation/Operation";
 // import Edit from "./Workspace/pages/Edit/Edit";
-//import Event from "./Workspace/pages/Event/Event"; 
+// import Event from "./Workspace/pages/Event/Event"; 
 // import Login from "./Workspace/pages/Login/Login"; 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<EventDetail />}/>
-        <Route path="/Profile" element={<Profile />}/>
-        {/* <Route path="/Home" element={<Home />}/>
-        <Route path="/Login" element={<Login />}/>
+        <Route path="/" element={<Home />}/>
+        <Route path="/Home" element={<Home />}/>
         <Route path="/Register" element={<Register />}/>
+        <Route path="/Profile" element={<Profile />}/>
+      </Routes>
+    </BrowserRouter>
+  );
+      {/* 
+        <Route path="/Login" element={<Login />}/>
         <Route path="/Event" element={<Event />}/>
         <Route path="/Home/Even/Application" element={<Application />}/>
         <Route path="/Home/Event/Operation/Edit" element={<Edit />}/>
         <Route path="/Home/Event/Operation/Operation" element={<Operation />}/> */}
-      </Routes>
-    </BrowserRouter>
-  );
 }
 export default App;
