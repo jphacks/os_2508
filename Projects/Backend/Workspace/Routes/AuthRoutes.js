@@ -49,3 +49,5 @@ router.post("/CheckAuth", InverseCookieObserver(), (req, res) => {
         return res.status(401).json({ message: "Unauthorized." });
     }
 });
+
+module.exports = router;

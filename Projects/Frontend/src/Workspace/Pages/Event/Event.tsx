@@ -27,7 +27,7 @@ function Event() {
     return (
         <div className="EventBackground">
             <div className="EventField">
-                {/* mapで表示
+                {/* mapで表示 */}
                 {events.map((event) => (
                     <EventButton
                         key={event.EventID}
@@ -37,7 +37,7 @@ function Event() {
                         onClick={() => window.location.href = `/Event/${event.EventID}`}
                     />
 
-                ))} */}
+                ))}
                 <EventButton
                     key="fall2025"
                     eventName="AAA"
@@ -82,6 +82,12 @@ function Event() {
             <div className="EventHomeButton">
                 <BaseButton label="Home" onClick={ () => window.location.href = "/Event" }/>
             </div>
+            {isOrganizer === 1 && (
+                <BaseButton
+                    label="Add Event"
+                    onClick={() => alert("Hi")}
+                />
+            )}
         </div>
 
     );

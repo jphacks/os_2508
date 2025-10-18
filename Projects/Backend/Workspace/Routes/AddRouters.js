@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
-const { db } = require("../Tools/DB");
+const { db } = require("../Tools/db");
 
 // cookieを使う
 router.use(cookieParser());

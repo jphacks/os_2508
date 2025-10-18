@@ -38,11 +38,11 @@ function Profile() {
                 </div>
                 <div className="ProfileDoubleField">
                     <div className="ProfileHalfDisplay">
-                        {/* <p>{userData.userId}</p> */}
+                        <p>{userData?.userId}</p>
                         <p>userid</p>
                     </div>
                     <div className="ProfileHalfDisplay">
-                        {/* <p>{new Date(userData.birth).toLocaleDateString('ja-JP')}</p>*/}
+                        <p>{userData ? new Date(userData.birth).toLocaleDateString('ja-JP') : ''}</p>
                         <p>birthday</p>
                     </div>
                 </div>
@@ -52,11 +52,11 @@ function Profile() {
                 </div>
                 <div className="ProfileDoubleField">
                     <div className="ProfileHalfDisplay">
-                        {/* <p>{{userData.gradYear}</p> */}
+                        <p>{userData?.gradYear}</p>
                         <p>grad year</p>
                     </div>
                     <div className="ProfileHalfDisplay">
-                        {/* <p>{userData.organization}</p>*/}
+                        <p>{userData?.organization}</p>
                         <p>organizaion</p>
                     </div>
                 </div>
@@ -64,14 +64,14 @@ function Profile() {
                         <p>Event</p>
                     </div>
                     <div className="ProfileDisplay">
-                        {/* <p>{userData.event}</p> */}
+                        <p>{userData?.events}</p>
                         <p>event</p>
                     </div>
                     <div className="ProfileFont">
                         <p>Message</p>
                     </div>
                     <div className="ProfileDisplay">
-                        {/* <p>{userData.message}</p> */}
+                        <p>{userData?.message}</p>
                         <p>mesage</p>
                     </div>
             </div>

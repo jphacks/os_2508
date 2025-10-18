@@ -24,32 +24,32 @@ interface EventData {
 }
 
 function EventDetail() {
-    // const { EventID } = useParams<{ EventID: string }>();
-    // const [eventData, setEventData] = useState<EventData | null>(null);
-    // const [loading, setLoading] = useState(true);
-    // const [error, setError] = useState<string | null>(null);
-    // const [isStaff, setIsStaff] = useState<number>(0);
+    const { EventID } = useParams<{ EventID: string }>();
+    const [eventData, setEventData] = useState<EventData | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [isStaff, setIsStaff] = useState<number>(0);
 
-    // useEffect(() => {
-    //     fetch(`/Event/${EventID}/Fetch`)
-    //         .then(res => {
-    //             if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-    //             return res.json();
-    //         })
-    //         .then(data => {
-    //             setEventData(data.EventsData[0]); // 1件だけ取得
-    //             setIsStaff(data.isStaff);
-    //             setLoading(false);
-    //         })
-    //         .catch(err => {
-    //             setError(err.message);
-    //             setLoading(false);
-    //         });
-    // }, [EventID]);
+    useEffect(() => {
+        fetch(`/Event/${EventID}/Fetch`)
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                setEventData(data.EventsData[0]); // 1件だけ取得
+                setIsStaff(data.isStaff);
+                setLoading(false);
+            })
+            .catch(err => {
+                setError(err.message);
+                setLoading(false);
+            });
+    }, [EventID]);
 
-    // if (loading) return <p>Loading...</p>;
-    // if (error) return <p>Error: {error}</p>;
-    // if (!eventData) return <p>No data found</p>;
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
+    if (!eventData) return <p>No data found</p>;
 
     return (
         <div className="DetailBackground">
@@ -93,7 +93,7 @@ function EventDetail() {
                         <p>運営連絡先：</p>
                     </div>
                 </div>
-                    {/* {isStaff === 1 ? (
+                    {isStaff === 1 ? (
                         <div className="DetailButton">
                             <SeveralButton label="Management" onClick={() => alert("管理画面へ")} />
                             <SeveralButton label="Edit" onClick={() => alert("編集画面へ")} />
@@ -103,7 +103,7 @@ function EventDetail() {
                             <SeveralButton label="Detaillication" onClick={() => { alert("申込み処理"); }} />
                             <SeveralButton label="Cancel" onClick={() => { alert("キャンセル処理"); }} />
                         </div>
-                    )} */}
+                    )}
                     <div className="DetailButton">
                         <SeveralButton label="Management" onClick={() => alert("管理画面へ")} />
                         <SeveralButton label="Edit" onClick={() => alert("編集画面へ")} />

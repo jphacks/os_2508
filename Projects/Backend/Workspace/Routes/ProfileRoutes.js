@@ -74,3 +74,5 @@ router.get("/:UserID/Fetch", CookieObserver(), async (req, res) => {
         Comment: userInfo[0].Comment
     })
 });
+
+module.exports = router;

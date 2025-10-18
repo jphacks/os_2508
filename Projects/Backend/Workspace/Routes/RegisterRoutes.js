@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const dotenv = require("dotenv");
-const { db } = require("../Tools/DB");
+const { db } = require("../Tools/db");
 const CookieObserver = require('../Tools/CookieObservre');
 
 const router = express.Router();

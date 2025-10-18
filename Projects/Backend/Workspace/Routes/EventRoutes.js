@@ -166,3 +166,5 @@ router.get("/:EventID/Cancel", CookieObserver(), async (req, res) => {
         return res.status(200).json({ message: "Cancel registered" });
     } else return res.status(409).json({ message: "CancelLog data conflicted..." });
 });
+
+module.exports = router;
