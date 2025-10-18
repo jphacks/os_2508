@@ -19,7 +19,11 @@ app.use("/Auth", authRoutes);
 
 // HomeRouting
 app.get("/Home", CookieObserver(), (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "..", "..", "Frontend", "dist", "index.html"));
+    // 0. Startup Log
+    console.log("/Auth/CheckAuth-API is running!");
+
+    // 1. 画面遷移
+    return res.sendFile(path.join(__dirname, "..", "..", "..", "Frontend", "dist", "index.html"));
 });
 
 // PORT番号を.envから取得

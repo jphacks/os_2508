@@ -12,7 +12,7 @@ router.get("/", InverseCookieObserver(), (req, res) => {
 });
 
 router.post("/CheckAuth", InverseCookieObserver(), (req, res) => {
-    // Startup Log
+    // 0. Startup Log
     console.log("/Auth/CheckAuth-API is running!");
 
     // 1. ユーザーからのInvitedKeyと.envからのInvitedKeyをそれぞれ取得する。
