@@ -1,0 +1,47 @@
+#root{
+    /*大きさ設定*/
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+* {
+  /*初期設定*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  /*大きさ設定*/
+  height: 100%;
+  width: 100%;
+}
+
+#app-base{
+  /*大きさ設定*/
+  height: 100%;
+  width: 100%;
+}
+
+form{
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+}
+
+.ProfileBackground{
+    /*背景設定*/
+    background-image: url('../../Components/Elements/ArrowVerProfile.png');
+    /* 背景の表示方法 */
+    background-size: cover;     
+    background-position: center;  
+    background-repeat: no-repeat; 
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+}
+
+.ProfileTitlebox{
+
+}

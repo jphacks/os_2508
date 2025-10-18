@@ -1,4 +1,4 @@
-import "./ConfirmButton.css"
+import "./BaseButton.css"
 
 type BaseButton = {
     label: string;
