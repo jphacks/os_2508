@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const db = require("./db");
+const { db } = require("./db");
 
 const statusQueries = {
     isOrganizer: {
@@ -18,9 +18,7 @@ async function CheckStatus(token, status, payload = null){
 
     let result = 0;
     // tokenがなかった瞬間statusは0になる
-    if (!token){
-        return result;
-    }
+    if (!token) return result;
 
     // tokenがあった場合、改ざんの形跡がないか検証
     try{
