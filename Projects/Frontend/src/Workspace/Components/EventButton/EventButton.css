@@ -1,0 +1,33 @@
+.EventButton{
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+
+    /*背景設定*/
+
+    /*飾り設定*/
+    border-radius: 20px;
+
+    /*アニメーション設定*/
+    transition: transform ease 0.3;
+    transform: scale(1.03);
+    
+}
+
+.h1{
+    /*文字設定*/
+    font-size: 20px;
+    color: black;
+}
+
+.h2{
+    /*文字設定*/
+    font-size: 10px;
+    color: (0,0,0,0.5);
+}
+
+.h3{
+    /*文字設定*/
+    font-size: 10px;
+    color: (0,0,0,0.5);
+}

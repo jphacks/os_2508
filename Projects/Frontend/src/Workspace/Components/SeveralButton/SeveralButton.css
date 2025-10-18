@@ -1,0 +1,19 @@
+.SeveralButton{
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+
+    /*位置設定*/
+    font-display: flex;
+    align-items: cebter;
+
+    /*背景設定*/
+    background-color: (180,180,180,180,0.6);
+
+    /*飾り設定*/
+    border-radius: 20px;
+
+    /*文字設定*/
+    font-size: 20px;
+    color: white;
+}

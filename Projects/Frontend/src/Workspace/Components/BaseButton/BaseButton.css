@@ -1,0 +1,29 @@
+.BaseButton{
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+
+    /*位置設定*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*文字設定*/
+    font-size: 20px; 
+    color: white;
+
+    /*アニメーション設定*/
+    transition: transform ease 3s;
+    transform: 1.03;
+
+    /*飾り設定*/
+
+}
+
+.BaseButton:hover{
+    box-shadow: #35cbcb;
+}
+
+.BaseButton.focus{
+    box-shadow: #35cbcb;
+}
