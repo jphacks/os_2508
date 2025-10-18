@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv').config();
 const cookieParser = require("cookie-parser");
-const jwt = require('jsonwebtoken');
+const CookieObserver = require('./Tools/CookieObserver');
 const app = express();
 
 // use系を使う
@@ -18,7 +18,7 @@ const authRoutes = require('./Routes/AuthRoutes');
 app.use("/Auth", authRoutes);
 
 // HomeRouting
-app.get("/Home", (req, res) => {
+app.get("/Home", CookieObserver(), (req, res) => {
     res.sendFile(path.join(__dirname, "..", "..", "..", "Frontend", "dist", "index.html"));
 });
 

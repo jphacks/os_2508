@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
+const InverseCookieObserver = require('../Tools/InverseCookieObserver')
 
-// InverseCookieObserver忘れずに
-router.get("/", (req, res) => {
+router.get("/", InverseCookieObserver(), (req, res) => {
     // Startup Log
     console.log("/Auth-API is running!");
 
@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     return res.sendFile(path.join(__dirname, "..", "..", "..", "Frontend", "dist", "index.html"));
 });
 
-router.post("/CheckAuth", (req, res) => {
+router.post("/CheckAuth", InverseCookieObserver(), (req, res) => {
     // Startup Log
     console.log("/Auth/CheckAuth-API is running!");
 
