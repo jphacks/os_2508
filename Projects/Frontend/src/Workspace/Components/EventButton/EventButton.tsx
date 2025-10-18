@@ -1,4 +1,4 @@
-import "./EventlButton.css"
+import "./EventButton.css"
 type EventButton = {
 eventName: string;
 eventDate: string;
