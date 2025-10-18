@@ -4,13 +4,13 @@ import { useParams } from "react-router-dom";
 import BaseButton from "../../Components/BaseButton/BaseButton";
 
 interface UserData {
+    nickName: string;
     userId: string;
-    nickname: string;
-    birth: number;
     gradYear: string;
     organization: string;
+    birth: number;
     events: string;
-    message: string;
+    comment: string;
 }
 
 function Profile() {
@@ -24,12 +24,12 @@ function Profile() {
             .catch(err => console.error(err));
     }, [UserID]);
 
-    // if (!userData) return <p>Loading...</p>; 
+    if (!userData) return <p>Loading...</p>; 
 
     return (
         <div className="ProfileBackground">
             <div className="ProfileTitlebox">
-                <p>Nick name:Ritsumeikan</p>
+                <p>Nickname: {userData?.nickName}</p>
             </div>
             <div className="ProfileBox">
                 <div className="ProfileUserBirth">
@@ -39,11 +39,11 @@ function Profile() {
                 <div className="ProfileDoubleField">
                     <div className="ProfileHalfDisplay">
                         <p>{userData?.userId}</p>
-                        <p>userid</p>
+                        {/* <p>userid</p> */}
                     </div>
                     <div className="ProfileHalfDisplay">
                         <p>{userData ? new Date(userData.birth).toLocaleDateString('ja-JP') : ''}</p>
-                        <p>birthday</p>
+                        {/* <p>birthday</p> */}
                     </div>
                 </div>
                 <div className="ProfileGradOrganization">
@@ -53,11 +53,11 @@ function Profile() {
                 <div className="ProfileDoubleField">
                     <div className="ProfileHalfDisplay">
                         <p>{userData?.gradYear}</p>
-                        <p>grad year</p>
+                        {/* <p>grad year</p> */}
                     </div>
                     <div className="ProfileHalfDisplay">
                         <p>{userData?.organization}</p>
-                        <p>organizaion</p>
+                        {/* <p>organizaion</p> */}
                     </div>
                 </div>
                 <div className="ProfileFont">
@@ -65,18 +65,18 @@ function Profile() {
                     </div>
                     <div className="ProfileDisplay">
                         <p>{userData?.events}</p>
-                        <p>event</p>
+                        {/* <p>event</p> */}
                     </div>
                     <div className="ProfileFont">
                         <p>Message</p>
                     </div>
                     <div className="ProfileDisplay">
-                        <p>{userData?.message}</p>
-                        <p>mesage</p>
+                        <p>{userData?.comment}</p>
+                        {/* <p>mesage</p> */}
                     </div>
             </div>
             <div className="ProfileHomeButton">
-                <BaseButton label="Home" onClick={ () => window.location.href = "/Profile" }/>
+                <BaseButton label="Home" onClick={ () => window.location.href = "/Home" } type="button"/>
             </div>
         </div>
     );

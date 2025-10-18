@@ -6,10 +6,12 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { db } = require("../Tools/db");
 const argon2 = require('argon2');
+const dotenv = require('dotenv');
 
 // use系
 router.use(cookieParser());
 router.use(express.json());
+dotenv.config({ path: path.join(__dirname, "..", ".env") });
 
 router.get("/", CookieObserver(), (req, res) => {
     // 0. Startup Log

@@ -6,9 +6,11 @@ const cookieParser = require("cookie-parser");
 const CookieObserver = require('../Tools/CookieObserver');
 const CheckStatus = require('../Tools/CheckStatus');
 const { db } = require("../Tools/db");
+const dotenv = require('dotenv');
 
 //use系
 router.use(cookieParser());
+dotenv.config({ path: path.join(__dirname, "..", ".env") });
 
 router.get("/", CookieObserver(), async (req, res) => {
     // 0. Startup Log
