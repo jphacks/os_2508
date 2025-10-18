@@ -17,7 +17,7 @@ function Login() {
           </div>
         </div>
         <div className="LoginHomeButton">
-          <BaseButton label="Home" onClick={ () => window.location.href = "/Home"}/>
+          <BaseButton label="Home" onClick={ () => window.location.href = "/Home"} type="button"/>
         </div>
       </div>
     </form >
