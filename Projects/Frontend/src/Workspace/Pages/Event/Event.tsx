@@ -38,7 +38,7 @@ function Event() {
                     />
 
                 ))}
-                <EventButton
+                {/* <EventButton
                     key="fall2025"
                     eventName="AAA"
                     eventDate={`${new Date("2025-10-10 20:00:00").toLocaleString()} ~ ${new Date("2025-10-10 20:00:00").toLocaleString()}`}
@@ -76,11 +76,11 @@ function Event() {
                     eventDate={`${new Date("2025-10-10 20:00:00").toLocaleString()} ~ ${new Date("2025-10-10 20:00:00").toLocaleString()}`}
                     eventForm={1000 + "円"} // 例
                     onClick={() => window.location.href = "/Event/fall2025"}
-                />
+                /> */}
                 
             </div>
             <div className="EventHomeButton">
-                <BaseButton label="Home" onClick={ () => window.location.href = "/Event" }/>
+                <BaseButton label="Home" onClick={ () => window.location.href = "/Home" } type="button"/>
             </div>
             {isOrganizer === 1 && (
                 <BaseButton

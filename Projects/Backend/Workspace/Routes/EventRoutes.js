@@ -53,6 +53,14 @@ router.get("/Fetch", CookieObserver(), async (req, res) => {
     }
 });
 
+router.get("/:EventID", CookieObserver(), async (req, res) => {
+    // 0. Startup Log
+    console.log("/Event/:EventID-API is running!");
+
+    // 1. 画面遷移
+    return res.sendFile(path.join(__dirname, "..", "..", "..", "Frontend", "dist", "index.html"));
+});
+
 router.get("/:EventID/Fetch", CookieObserver(), async (req, res) => {
     // 0. Startup Log
     console.log("/Event/:EventID/Fetch-API is running!");
