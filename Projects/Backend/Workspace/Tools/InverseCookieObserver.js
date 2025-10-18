@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 function InverseCookieObserver() {
     return (req, res, next) => {
         // 0. Startup Log
@@ -5,8 +7,8 @@ function InverseCookieObserver() {
 
         // 1. Cookieから情報を取得
         const token = req.cookies?.InvitedToken;
-        // tokenがなかった瞬間Authへ飛ばす
-        if (!token) return res.redirect("/");
+        // tokenがなかったなら画面を継続
+        if (!token) next();
 
         // 2. tokenがあった場合、改ざんの形跡がないか検証
         try{

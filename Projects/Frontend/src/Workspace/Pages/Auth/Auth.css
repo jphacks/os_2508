@@ -30,8 +30,9 @@ form{
 .AuthBackground{
     /* 背景設定*/
     background-image: url('../../Components/Elements/ArrowVerAuth.png');
-    background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 20%;
 
     /* 大きさ設定 */
     height: 100%;
@@ -75,8 +76,8 @@ form{
 
 .AuthSubmit{
     /* 大きさ設定 */
-    width: 20%;
-    height: 40%;
+    width: 40%;
+    height: 20%;
 
     /* 位置設定 */
     display: flex;
