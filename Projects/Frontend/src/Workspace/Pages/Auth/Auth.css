@@ -1,27 +1,24 @@
 #root{
-    /* 大きさ設定 */
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+ /*⼤きさ設定*/
+ height: 100vh;
+ width: 100vw;
+ overflow: hidden;
 }
-
-*{
-    */ 初期設定 */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
+* {
+ /*初期設定*/
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
 }
-
 body{
-    /* 大きさ設定 */
-    height: 100%;
-    width: 100%;
+ /*⼤きさ設定*/
+ height: 100%;
+ width: 100%;
 }
-
 #app-base{
-    /* 大きさ設定 */
-    height: 100%;
-    width: 100%;
+ /*⼤きさ設定*/
+ height: 100%;
+ width: 100%;
 }
 
 form{
@@ -31,16 +28,16 @@ form{
 }
 
 .AuthBackground{
-    */ 背景設定*/
-    background-image: url("../../Assets/Images/AuthBackground.png");
+    /* 背景設定*/
+    background-image: url('../../Components/Elements/ArrowVerAuth.png');
     background-position: center;
     background-repeat: no-repeat;
 
-    */ 大きさ設定 */
+    /* 大きさ設定 */
     height: 100%;
     width: 100%;
 
-    */ 位置設定 */
+    /* 位置設定 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,48 +45,48 @@ form{
 }
 
 .AuthBox{
-    */ 大きさ設定 */
+    /* 大きさ設定 */
     height: 70%;
     width: 50%;
 
-    */ 位置設定 */
+    /* 位置設定 */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    */ 余白設定 */
+    /* 余白設定 */
     gap: 10%;
 
-    */ 色設定 /*
+    /* 色設定 */
     color: #FFFFFF;
-    background-color: rgba(0, 0, 0, 0, 0, 3);
+    background-color: rgba(0, 0, 0, 0.3);
 
-    */ 飾り設定/*
+    /* 飾り設定*/
     border-radius: 20px;
-    backdrop-filter: blue(10px);
+    backdrop-filter: blur(10px);
 }
 
 .AuthInvite{
-    */ 大きさ設定 /*
+    /* 大きさ設定 */
     width: 60%;
     height: 20%;
 }
 
 .AuthSubmit{
-    */ 大きさ設定 /*
+    /* 大きさ設定 */
     width: 20%;
     height: 40%;
 
-    */ 位置設定 /*
+    /* 位置設定 */
     display: flex;
     align-items: center;
     justify-content: center;
 
-    */ 文字設定 /*
+    /* 文字設定 */
     font-size: 50px;
     
-    */ 飾り設定 /*
+    /* 飾り設定 */
     border-radius: 20px;;
 }
 
