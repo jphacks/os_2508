@@ -59,7 +59,8 @@ function Profile() {
                         {/* <p>{userData.organization}</p>*/}
                         <p>organizaion</p>
                     </div>
-                    <div className="ProfileFont">
+                </div>
+                <div className="ProfileFont">
                         <p>Event</p>
                     </div>
                     <div className="ProfileDisplay">
@@ -73,8 +74,6 @@ function Profile() {
                         {/* <p>{userData.message}</p> */}
                         <p>mesage</p>
                     </div>
-
-                </div>
             </div>
             <div className="ProfileHomeButton">
                 <BaseButton label="Home" onClick={ () => window.location.href = "/Profile" }/>

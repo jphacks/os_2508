@@ -5,10 +5,7 @@
 
     /*位置設定*/
     font-display: flex;
-    align-items: cebter;
-
-    /*背景設定*/
-    background-color: (180,180,180,180,0.6);
+    align-items: center;
 
     /*飾り設定*/
     border-radius: 20px;

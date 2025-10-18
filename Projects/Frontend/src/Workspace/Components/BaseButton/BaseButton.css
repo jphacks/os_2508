@@ -13,17 +13,20 @@
     color: white;
 
     /*アニメーション設定*/
-    transition: transform ease 3s;
-    transform: 1.03;
+    transition: transform ease 0.3s;
 
     /*飾り設定*/
+    border-radius: 10px;
+
+    /*背景設定*/
+    background-color: rgba(180,180,180,0.6);
 
 }
 
 .BaseButton:hover{
-    box-shadow: #35cbcb;
+    transform: scale(1.1);
 }
 
 .BaseButton.focus{
-    box-shadow: #35cbcb;
+    transform: scale(1.1);
 }
