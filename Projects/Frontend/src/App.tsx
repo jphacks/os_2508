@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes } from "react-router-dom";
 // import Home from "./Workspace/pages/Home/Home";
 // import Auth from "./Workspace/pages/Auth/Auth";
 // import Register from "./Workspace/pages/Register/Register"; 
