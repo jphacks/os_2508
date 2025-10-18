@@ -1,0 +1,154 @@
+#root{
+    /*大きさ設定*/
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+* {
+  /*初期設定*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  /*大きさ設定*/
+  height: 100%;
+  width: 100%;
+}
+
+#app-base{
+  /*大きさ設定*/
+  height: 100%;
+  width: 100%;
+}
+
+form{
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+}
+
+.RegisterBackground{
+    /*背景設定*/
+    background-image: url('../../Components/Elements/ArrowVerRegister.png');
+
+    background-size: cover;       /* 要素全体に画像を伸ばす */
+    background-position: center;  /* 中心に配置 */
+    background-repeat: no-repeat; /* 繰り返さない */
+
+    /* 大きさ設定 */
+    height: 100%;
+    width: 100%;
+
+    /* 位置設定 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* 余白設定 */
+    padding-top: 8%;
+    padding-bottom: 3%;
+}
+
+.RegisterBox{
+    /* 大きさ設定 */
+    height: 90%;
+    width: 70%;
+
+    /* 位置設定 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* 色設定 */
+    background-color: rgba(0, 0, 0, 0.3);
+
+    /* 飾り設定 */
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+
+    /* 余白設定 */
+    padding: 3%;
+    gap: 3%;
+}
+
+input {
+    padding-left: 3%;
+    font-size: 32px; /* お好みのサイズに調整 */
+}
+
+
+.RegisterDoubleField{
+    /* 大きさ設定 */
+    height: 18%;
+    width: 80%;
+
+    /* 位置設定 */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    /* 余白設定 */
+    gap: 2%;
+}
+
+.RegisterUseridPassword{
+    /* 大きさ設定 */
+    height: 40%;
+    width: 80%;
+
+    /* 位置設定 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* 余白設定 */
+    gap: 15%;
+}
+
+.RegisterMessage{
+    /* 大きさ設定 */
+    height: 18%;
+    width: 80%;
+
+    /* 位置設定 */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    /* 余白設定 */
+    gap: 2%;
+}
+
+.RegisterButton{
+    /* 大きさ設定 */
+    height: 20%;
+    width: 30%;
+
+    /* 文字設定 */
+    font-size: 30px;
+
+    /* 位置設定 */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.RegisterHomeButton{
+    /* 大きさ設定 */
+    height: 13%;
+    width: 100%;
+
+    /* 余白設定 */
+    padding-right: 87%;
+    padding-left: 3%;
+    padding-top: 1%;
+}

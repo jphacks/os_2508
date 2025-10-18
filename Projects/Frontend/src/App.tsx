@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Workspace/Pages/Home/Home";
 import Auth from "./Workspace/Pages/Auth/Auth";
-// import Register from "./Workspace/pages/Register/Register"; 
+import Register from "./Workspace/Pages/Register/Register"; 
 import Profile from "./Workspace/Pages/Profile/Profile"; 
 // import Application from "./Workspace/pages/Application/Application";
 // import Operation from "./Workspace/pages/Operation/Operation";
@@ -14,13 +14,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/Home" element={<Home />}/>
+        <Route path="/Register" element={<Register />}/>
         <Route path="/Profile" element={<Profile />}/>
       </Routes>
     </BrowserRouter>
   );
       {/* 
         <Route path="/Login" element={<Login />}/>
-        <Route path="/Register" element={<Register />}/>
         <Route path="/Event" element={<Event />}/>
         <Route path="/Home/Even/Application" element={<Application />}/>
         <Route path="/Home/Event/Operation/Edit" element={<Edit />}/>
