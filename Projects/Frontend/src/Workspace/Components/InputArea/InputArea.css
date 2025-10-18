@@ -1,0 +1,17 @@
+.InputArea{
+    /*大きさ設定*/
+    height: 100%;
+    height: 100%;
+
+    /*位置設定*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*飾り設定*/
+    border-radius: 20px;
+    border: none;
+
+    /*文字設定*/
+    font-size: 20px;
+}

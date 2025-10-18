@@ -1,0 +1,20 @@
+.ConfirmButton{
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+
+    /*位置設定*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*背景設定*/
+    background-color: #00c8cf;
+
+    /*飾り設定*/
+    border-radius: 20px;
+
+    /*文字設定*/
+    font-size: 20px;
+    color: white;
+}

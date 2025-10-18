@@ -1,0 +1,16 @@
+.InputField{
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+
+    /*位置設定*/
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    /*飾り設定*/
+    border-radius: 20px;
+
+    /*余白設定*/
+    gap: 1%;
+}
