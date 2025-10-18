@@ -72,8 +72,10 @@ form{
     backdrop-filter: blur(10px);
 
     /* 余白設定 */
-    padding: 3%;
-    gap: 3%;
+    padding: 1%;
+    gap: 1%;
+
+    border: none;
 }
 
 input {
@@ -94,7 +96,7 @@ input {
     align-items: center;
     
     /* 余白設定 */
-    gap: 2%;
+    gap: 1%;
 }
 
 .RegisterUseridPassword{
@@ -109,7 +111,7 @@ input {
     align-items: center;
 
     /* 余白設定 */
-    gap: 10%;
+    gap: 5%;
 }
 
 .RegisterMessage{
@@ -124,7 +126,7 @@ input {
     align-items: center;
 
     /* 余白設定 */
-    gap: 2%;
+    gap: 1%;
 }
 
 .RegisterButton{
