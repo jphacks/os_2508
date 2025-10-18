@@ -6,18 +6,18 @@ import Profile from "./Workspace/Pages/Profile/Profile";
 // import Application from "./Workspace/pages/Application/Application";
 // import Operation from "./Workspace/pages/Operation/Operation";
 // import Edit from "./Workspace/pages/Edit/Edit";
-// import Event from "./Workspace/pages/Event/Event"; 
+import Event from "./Workspace/Pages/Event/Event"; 
 // import Login from "./Workspace/pages/Login/Login"; 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Profile />}/>
+        <Route path="/" element={<Event />}/>
         <Route path="/Profile" element={<Profile />}/>
+        <Route path="/Event" element={<Event />}/>
         {/* <Route path="/Home" element={<Home />}/>
         <Route path="/Login" element={<Login />}/>
         <Route path="/Register" element={<Register />}/>
-        <Route path="/Event" element={<Event />}/>
         <Route path="/Home/Even/Application" element={<Application />}/>
         <Route path="/Home/Event/Operation/Edit" element={<Edit />}/>
         <Route path="/Home/Event/Operation/Operation" element={<Operation />}/> */}
