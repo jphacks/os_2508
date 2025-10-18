@@ -1,0 +1,127 @@
+#root {
+    /*大きさ設定*/
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+* {
+    /*初期設定*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+}
+
+#app-base {
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+}
+
+form {
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+}
+
+.DetailBackground {
+    /*背景設定*/
+    background-image: url('../../Components/Elements/ArrowVerEvents.png');
+   
+    /* 背景の表示方法 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+
+    /*位置設定*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.DetailField{
+    /*大きさ設定*/
+    height: 65%;
+    width: 80%;
+
+    /*位置設定*/
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    /*背景設定*/
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(20px);
+
+    /*飾り設定*/
+    border-radius: 20px;
+
+    /*余白設定*/
+    margin-top: 10%;
+    padding: 2%;
+
+    /*文字設定*/
+    color: white;
+
+    /*スクロール設定*/
+    overflow-y: scroll;
+
+}
+
+.DetailName{
+    /*文字設定*/
+    font-size: 50px;
+
+    /*余白設定*/
+    padding-bottom: 5%;
+}
+
+.DetailBox{
+    /*文字設定*/
+    font-size: 40px;
+}
+
+.DetailExplain{
+    /*大きさ指定*/
+    flex: 1 1 auto;
+    width: 85%;
+}
+
+.DetailButton{
+    /*大きさ設定*/
+    width: 100%;
+
+    /*位置設定*/
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    /*余白設定*/
+    gap: 4%;
+    padding-left: 80%;
+
+    /*背景設定*/
+    background-color: rbga(180,180,180,0.6);
+
+}
+
+.DetailHomeButton{
+    /*大きさ設定*/
+    width: 100%;
+
+    /*余白設定*/
+    padding-right: 85%;
+    padding-left: 5%;
+    padding-top: 1%;
+
+}
