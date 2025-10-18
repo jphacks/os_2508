@@ -1,10 +1,10 @@
 import "./InputField.css"
-type InputField = {
+type InputFieldProps = {
     name: string;
     placeholder: string;
     type: string;
 }
-const InputField = ({name, placeholder, type}: InputField) => {
+const InputField = ({name, placeholder, type}: InputFieldProps) => {
     return (
         <input className="InputField" name={name} type={type} placeholder={placeholder} />
     )
