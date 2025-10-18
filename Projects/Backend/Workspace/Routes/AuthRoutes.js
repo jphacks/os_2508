@@ -4,10 +4,10 @@ const jwt = require('jsonwebtoken');
 const InverseCookieObserver = require('../Tools/InverseCookieObserver');
 
 router.get("/", InverseCookieObserver(), (req, res) => {
-    // Startup Log
+    // 0. Startup Log
     console.log("/Auth-API is running!");
 
-    // 画面遷移
+    // 1. 画面遷移
     return res.sendFile(path.join(__dirname, "..", "..", "..", "Frontend", "dist", "index.html"));
 });
 
