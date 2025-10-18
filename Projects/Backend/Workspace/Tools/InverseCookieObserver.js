@@ -6,9 +6,7 @@ function InverseCookieObserver() {
         // 1. Cookieから情報を取得
         const token = req.cookies?.InvitedToken;
         // tokenがなかった瞬間Authへ飛ばす
-        if (!token){
-            return res.redirect("/");
-        }
+        if (!token) return res.redirect("/");
 
         // 2. tokenがあった場合、改ざんの形跡がないか検証
         try{
