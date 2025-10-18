@@ -109,7 +109,7 @@ input {
     align-items: center;
 
     /* 余白設定 */
-    gap: 15%;
+    gap: 10%;
 }
 
 .RegisterMessage{
