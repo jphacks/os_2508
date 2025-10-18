@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true })); // POSTされたformの内容�
 app.use(express.static(path.join(__dirname, "..", "..", "..", "Frontend", "dist")));
 
 // ルーティング(申請してくれたら追加します)
+// AuthRouting
 const authRoutes = require('./Routes/AuthRoutes');
 app.use("/Auth", authRoutes);
 

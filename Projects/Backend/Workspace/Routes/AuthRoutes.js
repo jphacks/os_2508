@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const InverseCookieObserver = require('../Tools/InverseCookieObserver')
+const InverseCookieObserver = require('../Tools/InverseCookieObserver');
 
 router.get("/", InverseCookieObserver(), (req, res) => {
     // Startup Log
