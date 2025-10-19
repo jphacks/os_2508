@@ -194,4 +194,10 @@ router.get("/:EventID/Cancel", CookieObserver(), async (req, res) => {
     } else return res.status(409).json({ message: "CancelLog data conflicted..." });
 });
 
+// Edit関連ルートを読み込み
+const editRoutes = require('./EventEditRoutes');
+
+// 「/Event/:EventID/EventEdit」配下のルーティングをeditRoutesに委譲
+router.use("/:EventID/EventEdit", editRoutes);
+
 module.exports = router;
