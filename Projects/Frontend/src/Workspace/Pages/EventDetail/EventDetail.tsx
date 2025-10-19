@@ -3,6 +3,7 @@ import SeveralButton from "../../Components/SeveralButton/SeveralButton";
 import BaseButton from "../../Components/BaseButton/BaseButton";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 // Eventデータの型を定義
 interface EventData {
@@ -30,6 +31,7 @@ function EventDetail() {
     const [error, setError] = useState<string | null>(null);
     const [isStaff, setIsStaff] = useState<number>(0);
     const [isAttend, setIsAttend] = useState<number>(0);
+    const navigate = useNavigate();
 
     const handleApply = async () => {
         try {
@@ -141,8 +143,8 @@ function EventDetail() {
                 </div>
                 {isStaff !== null && isStaff !== 0 ? (
                         <div className="DetailButton">
-                            <SeveralButton label="Management" onClick={() => window.location.href = "/Event/EventManagemen"}/>
-                            <SeveralButton label="Edit" onClick={ () => window.location.href = `/Event/${EventID}/EventEdit`} />
+                            <SeveralButton label="Management" onClick={() => alert("管理画面へ")} />
+                            <SeveralButton label="Edit" onClick={() => alert("編集画面へ")} />
                         </div>
                     ) : (
                     <div className="DetailButton">
@@ -156,7 +158,7 @@ function EventDetail() {
 
             </div>
             <div className="DetailHomeButton">
-                <BaseButton label="Home" onClick={ () => window.location.href = "/Home" } />
+                <BaseButton label="Home" onClick={() => navigate("/Home")} />
             </div>
         </div>
     );
