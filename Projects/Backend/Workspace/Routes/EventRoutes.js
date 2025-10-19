@@ -28,7 +28,7 @@ router.get("/Fetch", CookieObserver(), async (req, res) => {
     const token = req.cookies?.LoginToken;
 
     // 2. tokenがあった場合、改ざんの形跡がないか検証
-    try{
+    try {
         // tokenの改ざんがないか検証
         jwt.verify(token, process.env.LOGIN_SECRET);
         // Verify Success Log
@@ -45,11 +45,11 @@ router.get("/Fetch", CookieObserver(), async (req, res) => {
             isOrganizer: isOrganizer,
             EventsData: eventsQuick
         })
-    }catch(err){
+    } catch (err) {
         // Verify Error Log
         console.error("LoginToken is not verified!", err);
         // 検証に問題があった瞬間エラー
-        return res.status(401).json({message: "Unauthorized."});
+        return res.status(401).json({ message: "Unauthorized." });
     }
 });
 
@@ -72,7 +72,7 @@ router.get("/:EventID/Fetch", CookieObserver(), async (req, res) => {
     const token = req.cookies?.LoginToken;
 
     // 3. tokenがあった場合、改ざんの形跡がないか検証
-    try{
+    try {
         // tokenの改ざんがないか検証
         jwt.verify(token, process.env.LOGIN_SECRET);
         // Verify Success Log
@@ -89,11 +89,11 @@ router.get("/:EventID/Fetch", CookieObserver(), async (req, res) => {
             isStaff: isStaff,
             EventsData: eventInfo
         })
-    }catch(err){
+    } catch (err) {
         // Verify Error Log
         console.error("LoginToken is not verified!", err);
         // 検証に問題があった瞬間エラー
-        return res.status(401).json({message: "Unauthorized."});
+        return res.status(401).json({ message: "Unauthorized." });
     }
 });
 
