@@ -2,9 +2,12 @@ import './EventAdd.css';
 import SeveralButton from "../../Components/SeveralButton/SeveralButton";
 import InputArea from "../../Components/InputArea/InputArea";
 import BaseButton from "../../Components/BaseButton/BaseButton";
-
+import { useNavigate } from "react-router-dom";
 
 function EventAdd() {
+
+    const navigate = useNavigate();
+    
     return (
         <div className="AddBackground">
             <div className="AddField">
@@ -49,7 +52,7 @@ function EventAdd() {
                 <SeveralButton label="Add" onClick={() => alert("保存")} />
             </div>
             <div className="AddHomeButton">
-                <BaseButton label="Home" onClick={() => { alert("ホームへ遷移"); }} />
+                <BaseButton label="Home" onClick={() => navigate("/Home")} />
             </div>
         </div>
     );

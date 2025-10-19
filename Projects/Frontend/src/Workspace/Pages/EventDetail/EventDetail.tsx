@@ -156,7 +156,7 @@ function EventDetail() {
 
             </div>
             <div className="DetailHomeButton">
-                <BaseButton label="Home" onClick={() => { alert("ホームへ遷移"); }} />
+                <BaseButton label="Home" onClick={ () => window.location.href = "/Home" } />
             </div>
         </div>
     );
