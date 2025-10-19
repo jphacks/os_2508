@@ -29,6 +29,51 @@ function EventDetail() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [isStaff, setIsStaff] = useState<number>(0);
+    const [isAttend, setIsAttend] = useState<number>(0);
+
+    const handleApply = async () => {
+        try {
+            const res = await fetch(`/Event/${EventID}/Application`, {
+            method: "GET",
+            credentials: "include", // Cookieを送るために必要
+            });
+
+            console.log("Application Button");
+
+            const data = await res.json();
+
+            if (res.ok) {
+            setIsAttend(data.isAttend); // 出席登録成功
+            } else {
+            console.log(data.message); // エラー内容
+            }
+        } catch (err) {
+            console.log("通信エラー");
+            console.error(err);
+        }
+    };
+
+    const handleCancel = async () => {
+        try {
+            const res = await fetch(`/Event/${EventID}/Cancel`, {
+            method: "GET",
+            credentials: "include", // Cookieを送るために必要
+            });
+
+            console.log("Cancel Button");
+
+            const data = await res.json();
+
+            if (res.ok) {
+            setIsAttend(data.isAttend); // 出席登録成功
+            } else {
+            console.log(data.message); // エラー内容
+            }
+        } catch (err) {
+            console.log("通信エラー");
+            console.error(err);
+        }
+    };
 
     useEffect(() => {
         fetch(`/Event/${EventID}/Fetch`)
@@ -39,6 +84,7 @@ function EventDetail() {
             .then(data => {
                 setEventData(data.EventsData[0]); // 1件だけ取得
                 setIsStaff(data.isStaff);
+                setIsAttend(data.isAttend);
                 setLoading(false);
             })
             .catch(err => {
@@ -93,21 +139,21 @@ function EventDetail() {
                         {/* <p>運営連絡先：</p> */}
                     </div>
                 </div>
-                    {isStaff === 1 ? (
+                {isStaff !== null && isStaff !== 0 ? (
                         <div className="DetailButton">
                             <SeveralButton label="Management" onClick={() => alert("管理画面へ")} />
                             <SeveralButton label="Edit" onClick={() => alert("編集画面へ")} />
                         </div>
                     ) : (
-                        <div className="DetailButton">
-                            <SeveralButton label="Detaillication" onClick={() => { alert("申込み処理"); }} />
-                            <SeveralButton label="Cancel" onClick={() => { alert("キャンセル処理"); }} />
-                        </div>
-                    )}
                     <div className="DetailButton">
-                        <SeveralButton label="Management" onClick={() => alert("管理画面へ")} />
-                        <SeveralButton label="Edit" onClick={() => alert("編集画面へ")} />
+                        {isAttend !== null && isAttend !== 0 ? (
+                            <SeveralButton label="Cancel" onClick={handleCancel} />
+                        ) : (
+                            <SeveralButton label="Appllication" onClick={handleApply} />
+                        )}
                     </div>
+)}
+
             </div>
             <div className="DetailHomeButton">
                 <BaseButton label="Home" onClick={() => { alert("ホームへ遷移"); }} />
