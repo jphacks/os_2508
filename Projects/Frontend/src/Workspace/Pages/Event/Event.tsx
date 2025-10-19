@@ -36,7 +36,7 @@ function Event() {
                     </div>
                 </div>
                 {/* mapで表示 */}
-                {/* {events.map((event) => (
+                {events.map((event) => (
                     <EventButton
                         key={event.EventID}
                         eventName={event.EventName}
@@ -49,9 +49,9 @@ function Event() {
                 {isOrganizer === 1 && (
                     <BaseButton
                         label="Add Event"
-                        onClick={() => alert("Hi")}
+                        onClick={() => window.location.href = `/EventAdd`}
                     />
-                )} */}
+                )}
 
 
                 <EventButton
@@ -97,7 +97,7 @@ function Event() {
             <div className="EventAddButton">
                 <BaseButton
                     label="Add Event"
-                    onClick={() => alert("Hi")}
+                 onClick={() => window.location.href = "/Event/EventAdd"}
                 />
             </div>
             <div className="EventHomeButton">

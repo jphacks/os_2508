@@ -106,11 +106,11 @@ function EventDetail() {
                     )}
                     <div className="DetailButton">
                         <SeveralButton label="Management" onClick={() => alert("管理画面へ")} />
-                        <SeveralButton label="Edit" onClick={() => alert("編集画面へ")} />
+                        <SeveralButton label="Edit" onClick={ () => window.location.href = `/Event/${EventID}/EventEdit`} />
                     </div>
             </div>
             <div className="DetailHomeButton">
-                <BaseButton label="Home" onClick={() => { alert("ホームへ遷移"); }} />
+                <BaseButton label="Home" onClick={ () => window.location.href = "/Home" } type="button" />
             </div>
         </div>
     );
