@@ -101,6 +101,9 @@ form {
 
     /*余白設定*/
     gap: 5%;
+
+    /*文字設定*/
+    color: Black;
 }
 
 .ManagementList th,
@@ -154,6 +157,9 @@ form {
 
     /*余白設定*/
     gap: 5%;
+
+    /*文字設定*/
+    color: Black;
 }
 
 .ManagementCheck {
