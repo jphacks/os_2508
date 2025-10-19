@@ -17,7 +17,7 @@ router.get("/", cookieObserver(), (req, res) => {
     res.sendFile(path.join(__dirname, "..", "..", "..", "..", "Frontend", "react-files", "dist", "index.html"));
 });
 
-// --- 定数 ---
+// -- 定数 --
 // ユーザーIDごとの基準値
 const MAX_ATTEMPTS = 5; // 5回失敗でブロック
 const ATTEMPT_WINDOW_MS = 120 * 60 * 1000; // 120分ごとにリセット
