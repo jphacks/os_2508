@@ -82,6 +82,7 @@ form {
     /*位置設定*/
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
 
     /*余白設定*/
     gap: 1%;
