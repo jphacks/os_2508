@@ -43,7 +43,7 @@ function EventManagement() {
                         </tr>
                         <tr>
                             <td><input className="ManagementCheck"type="checkbox" /></td>
-                            <td>RitsumeikanRitsumeikanRitsumeikanRitsumeikan</td>
+                            <td>RitsumeikanRitsumeikanRitsumeikanRitsumeikanRitsumeikanRitsumeikanRitsumeikanRitsumeikan</td>
                             <td>2</td>
                             <td>2005/10/4</td>
                             <td>Ritsumeikan</td>

@@ -51,6 +51,8 @@ form {
     /*空白設定*/
     padding-top: 10%;
     gap: 2%;
+
+    
 }
 
 .ManagementField {
@@ -100,6 +102,9 @@ form {
 
     /*余白設定*/
     gap: 5%;
+
+    /*文字設定*/
+    font-size: 20px;
 }
 
 .ManagementList th,
@@ -153,6 +158,9 @@ form {
 
     /*余白設定*/
     gap: 5%;
+
+    /*文字設定*/
+    font-size: 20px;
 }
 
 .ManagementCheck {
