@@ -49,7 +49,7 @@ function EventEdit() {
                 </div>
             </div>
             <div className="EditHomeButton">
-                <BaseButton label="Home" onClick={() => { alert("ホームへ遷移"); }} />
+                <BaseButton label="Home" onClick={ () => window.location.href = "/Home" }/>
             </div>
         </div>
     );
