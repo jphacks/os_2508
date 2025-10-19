@@ -73,19 +73,30 @@ router.get("/:EventID/Fetch", CookieObserver(), async (req, res) => {
 
     // 3. tokenがあった場合、改ざんの形跡がないか検証
     try{
-        // tokenの改ざんがないか検証
-        jwt.verify(token, process.env.LOGIN_SECRET);
+        // Tokenのdecodeと情報の読み出し 
+        const decodedToken = jwt.verify(token, process.env.LOGIN_SECRET);
+        const userId = decodedToken.userId;
         // Verify Success Log
         console.log("LoginToken is verified!");
 
         // isOrganizerの確認
-        const isStaff = await CheckStatus(token, "isStatus", eventId);
+        const isStaff = await CheckStatus(token, "isStaff", eventId);
         console.log("isStaff:", isStaff);
         // DBからEvent情報の読み出し
         const [eventInfo] = await db.query("SELECT * FROM Events WHERE EventID = ? AND NOW() <= StartDateTime;", [eventId]);
         console.log("eventInfo:", eventInfo);
+        // 出席状況の読み出し
+        let isAttend = 0;
+        const [attend] = await db.query("SELECT 1 FROM AttendLogs WHERE EventID = ? AND UserID = ? LIMIT 1;", [eventId, userId]);
+        if (attend.length != 0) { // isStaffの場合も出席登録しといてね
+            // 出席Flagを1にする
+            isAttend = 1;
+            // DB Log
+            console.log("Attend insert into DB:", attend, "isAttend is ", isAttend);
+        }
         // 各必要な情報を送り返す
         return res.json({
+            isAttend: isAttend,
             isStaff: isStaff,
             EventsData: eventInfo
         })
@@ -98,6 +109,9 @@ router.get("/:EventID/Fetch", CookieObserver(), async (req, res) => {
 });
 
 router.get("/:EventID/Application", CookieObserver(), async (req, res) => {
+    // 0. Startup Log
+    console.log("/Event/:EventID/Application-API is running!");
+
     // 1. Cookieから情報を取得
     const token = req.cookies?.LoginToken;
     // tokenがなかった瞬間Authへ飛ばす
@@ -128,16 +142,19 @@ router.get("/:EventID/Application", CookieObserver(), async (req, res) => {
     if (now > applicationLimit) return res.status(400).json({ message: `${now} > ${applicationLimit}` });
 
     // 7. すでに出席登録されていないか確認する
-    const [attend] = await db.query("SELECT UserID, isStaff FROM AttendLogs WHERE EventID = ? AND UserID = ?", [eventId, userId]);
+    const [attend] = await db.query("SELECT 1 FROM AttendLogs WHERE EventID = ? AND UserID = ? LIMIT 1;", [eventId, userId]);
     if (attend.length == 0) { // isStaffの場合も出席登録しといてね
         await db.query("INSERT INTO AttendLogs (UserID, EventID, isStaff, Status) VALUES (?, ?, ?, ?)", [userId, eventId, 0, 0]);
         // DB Log
         console.log("Attend insert into DB:", attend);
-        return res.status(200).json({ message: "Attendance registered" });
+        return res.json({ isAttend: 1 });
     } else return res.status(409).json({ message: "AttendLog data conflicted..." });
 });
 
 router.get("/:EventID/Cancel", CookieObserver(), async (req, res) => {
+    // 0. Startup Log
+    console.log("/Event/:EventID/Cancel-API is running!");
+
     // 1. Cookieから情報を取得
     const token = req.cookies?.LoginToken;
     // tokenがなかった瞬間Authへ飛ばす
@@ -168,12 +185,12 @@ router.get("/:EventID/Cancel", CookieObserver(), async (req, res) => {
     if (now > cancelLimit) return res.status(400).json({ message: `${now} > ${cancelLimit}` });
 
     // 7. すでに出席登録されていないか確認する
-    const [attend] = await db.query("SELECT UserID, isStaff FROM AttendLogs WHERE EventID = ? AND UserID = ?", [eventId, userId]);
-    if (attend.length == 0) { // isStaffの場合も出席登録しといてね
-        await db.query("INSERT INTO AttendLogs (UserID, EventID, isStaff, Status) VALUES (?, ?, ?, ?)", [userId, eventId, 0, 0]);
+    const [attend] = await db.query("SELECT 1 FROM AttendLogs WHERE EventID = ? AND UserID = ? LIMIT 1;", [eventId, userId]);
+    if (attend.length != 0) { // isStaffの場合も出席登録しといてね
+        await db.query("DELETE FROM AttendLogs WHERE userId = ? AND eventId = ?;", [userId, eventId]);
         // DB Log
         console.log("Cancel delete from DB:", attend);
-        return res.status(200).json({ message: "Cancel registered" });
+        return res.json({ isAttend: 0 });
     } else return res.status(409).json({ message: "CancelLog data conflicted..." });
 });
 
