@@ -82,9 +82,11 @@ form {
     /*位置設定*/
     display: flex;
     flex-direction: row;
+    text-align: right; 
 
     /*余白設定*/
     gap: 1%;
+    padding-right: 10px;
 }
 
 .EventSearchButton{

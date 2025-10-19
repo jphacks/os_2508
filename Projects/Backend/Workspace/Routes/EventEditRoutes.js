@@ -13,6 +13,7 @@ router.use(cookieParser());
 // .envを違う階層から読み込む。
 dotenv.config({ path: path.join(__dirname, "..", ".env")});
 async function CheckStaff(req, eventId) {
+    if (!eventId) throw new Error("eventId is required"); 
     let result;
 
     // 1. cookieを取得する
@@ -35,7 +36,7 @@ async function CheckStaff(req, eventId) {
 
     // 3. DBからisStaffを取り出し
     const [rows] = await db.query(
-        "SELECT isStaff FROM AttendLog WHERE UserID = ? AND EventID = ?;",
+        "SELECT isStaff FROM AttendLogs WHERE UserID = ? AND EventID = ?;",
         [userId, eventId]
     );
     console.log("[CheckStaff] DB rows:", rows); // デバッグ
@@ -67,10 +68,10 @@ router.get("/", cookieObserver(), async (req, res) => {
     }
 });
 
-router.get("/Fetch", cookieObserver(), async (req, res) => {
+router.get("/:EventID/Fetch", cookieObserver(), async (req, res) => {
     const eventID = req.params.EventID;
     // 1. isStaffの確認
-    const isStaff = await CheckStaff(req);
+    const isStaff = await CheckStaff(req, eventID);
     if(isStaff != 1){
             return res.status(403).json({message: "Access denied. Organizer only."});
     }
@@ -87,6 +88,7 @@ router.get("/Fetch", cookieObserver(), async (req, res) => {
 
 // イベント更新
 router.post("/:EventID/EventEdit", cookieObserver(), async (req, res) => {
+    const eventID = req.params.EventID;
     try {
         const EventID = req.params.EventID;
         const isStaff = await CheckStaff(req, EventID);
@@ -121,7 +123,8 @@ router.post("/:EventID/EventEdit", cookieObserver(), async (req, res) => {
 
 
 //イベントの削除
-router.delete("/DeleteEvent/:EventID", cookieObserver(), async (req, res) => {
+router.delete("/:EventID/DeleteEvent", cookieObserver(), async (req, res) => {
+    const eventID = req.params.EventID;
     try {
         const isOrganizer = await CheckOrganizer(req);
         if (isOrganizer != 1) {

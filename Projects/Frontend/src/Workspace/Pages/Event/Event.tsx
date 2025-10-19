@@ -46,12 +46,6 @@ function Event() {
                     />
 
                 ))}
-                {isOrganizer === 1 && (
-                    <BaseButton
-                        label="Add Event"
-                        onClick={() => window.location.href = `/EventAdd`}
-                    />
-                )}
 
 
                 {/* <EventButton
@@ -95,10 +89,13 @@ function Event() {
                 /> */}
             </div>
             <div className="EventAddButton">
-                <BaseButton
-                    label="Add Event"
-                    onClick={() => window.location.href = "/Event/EventAdd"}
-                />
+                {isOrganizer === 1 && (
+                    <BaseButton
+                        label="Add Event"
+                        onClick={() => window.location.href = "/Event/AddEvent"}
+                        type="button"
+                    />
+                )}
             </div>
             <div className="EventHomeButton">
                 <BaseButton label="Home" onClick={() => window.location.href = "/Home"} type="button" />
