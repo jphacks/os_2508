@@ -18,3 +18,11 @@
     font-size: 20px;
     color: white;
 }
+
+.ConfirmButton:hover{
+    transform: scale(1.05);
+}
+
+.ConfirmButton.focus{
+    transform: scale(1.05);
+}

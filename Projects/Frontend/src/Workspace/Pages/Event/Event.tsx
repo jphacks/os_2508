@@ -1,6 +1,8 @@
 import './Event.css';
 import EventButton from "../../Components/EventButton/EventButton";
 import BaseButton from "../../Components/BaseButton/BaseButton";
+import ConfirmButton from "../../Components/ConfirmButton/ConfirmButton";
+import InputField from "../../Components/InputField/InputField";
 import { useEffect, useState } from "react";
 
 interface EventData {
@@ -27,6 +29,12 @@ function Event() {
     return (
         <div className="EventBackground">
             <div className="EventField">
+                <div className="EventSearch">
+                    <InputField name="search" type="text" placeholder="🔍" />
+                    <div className="EventSearchButton" >
+                        <ConfirmButton type="submit" label="search" />
+                    </div>
+                </div>
                 {/* mapで表示 */}
                 {/* {events.map((event) => (
                     <EventButton

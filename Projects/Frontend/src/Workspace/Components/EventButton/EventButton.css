@@ -11,7 +11,6 @@
 
     /*アニメーション設定*/
     transition: transform ease 0.3;
-    transform: scale(1.03);
     
 }
 
@@ -34,9 +33,9 @@
 }
 
 .EventButton:hover{
-    transform: scale(1.01);
+    transform: scale(1.03);
 }
 
 .EventButton.focus{
-    transform: scale(1.01);
+    transform: scale(1.03);
 }
