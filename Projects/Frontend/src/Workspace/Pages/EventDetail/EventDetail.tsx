@@ -141,8 +141,8 @@ function EventDetail() {
                 </div>
                 {isStaff !== null && isStaff !== 0 ? (
                         <div className="DetailButton">
-                            <SeveralButton label="Management" onClick={() => alert("管理画面へ")} />
-                            <SeveralButton label="Edit" onClick={() => alert("編集画面へ")} />
+                            <SeveralButton label="Management" onClick={() => window.location.href = "/Event/EventManagemen"}/>
+                            <SeveralButton label="Edit" onClick={ () => window.location.href = `/Event/${EventID}/EventEdit`} />
                         </div>
                     ) : (
                     <div className="DetailButton">
