@@ -144,7 +144,7 @@ function EventDetail() {
                 {isStaff !== null && isStaff !== 0 ? (
                         <div className="DetailButton">
                             <SeveralButton label="Management" onClick={() => alert("管理画面へ")} />
-                            <SeveralButton label="Edit" onClick={() => alert("編集画面へ")} />
+                            <SeveralButton label="Edit" onClick={() => navigate(`/Event/${EventID}/EditEvent`)} />
                         </div>
                     ) : (
                     <div className="DetailButton">
