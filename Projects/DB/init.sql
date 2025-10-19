@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS Events (
     Proposal JSON
 );
 
--- AttendLog
+-- AttendLogs
 CREATE TABLE IF NOT EXISTS AttendLogs (
     AttendLogID INT AUTO_INCREMENT PRIMARY KEY,
     UserID VARCHAR(50) NOT NULL,

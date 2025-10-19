@@ -53,6 +53,10 @@ router.get("/Fetch", CookieObserver(), async (req, res) => {
     }
 });
 
+// AddRouting
+const addRoutes = require('./EventAddRoutes');
+router.use("/AddEvent", addRoutes);
+
 router.get("/:EventID", CookieObserver(), async (req, res) => {
     // 0. Startup Log
     console.log("/Event/:EventID-API is running!");
@@ -194,10 +198,8 @@ router.get("/:EventID/Cancel", CookieObserver(), async (req, res) => {
     } else return res.status(409).json({ message: "CancelLog data conflicted..." });
 });
 
-// Edit関連ルートを読み込み
+// EditRouting
 const editRoutes = require('./EventEditRoutes');
-
-// 「/Event/:EventID/EventEdit」配下のルーティングをeditRoutesに委譲
-router.use("/:EventID/EventEdit", editRoutes);
+router.use("/:EventID/EditEvent", editRoutes);
 
 module.exports = router;
