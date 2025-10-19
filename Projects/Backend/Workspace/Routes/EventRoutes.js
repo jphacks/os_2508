@@ -53,6 +53,10 @@ router.get("/Fetch", CookieObserver(), async (req, res) => {
     }
 });
 
+// AddRouting
+const addRoutes = require('./EventAddRoutes');
+router.use("/AddEvent", addRoutes);
+
 router.get("/:EventID", CookieObserver(), async (req, res) => {
     // 0. Startup Log
     console.log("/Event/:EventID-API is running!");
@@ -193,10 +197,6 @@ router.get("/:EventID/Cancel", CookieObserver(), async (req, res) => {
         return res.json({ isAttend: 0 });
     } else return res.status(409).json({ message: "CancelLog data conflicted..." });
 });
-
-// AddRouting
-const addRoutes = require('./EventAddRoutes');
-router.use("/AddEvent", addRoutes);
 
 // EditRouting
 const editRoutes = require('./EventEditRoutes');
