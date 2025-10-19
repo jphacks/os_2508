@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Workspace/Pages/Home/Home";
-import Auth from "./Workspace/Pages/Auth/Auth";
+//import Auth from "./Workspace/Pages/Auth/Auth";
 import Register from "./Workspace/Pages/Register/Register"; 
 import Profile from "./Workspace/Pages/Profile/Profile"; 
 import EventDetail from "./Workspace/Pages/EventDetail/EventDetail";
@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<EventAdd />}/>
+        <Route path="/" element={<EventManagement />}/>
         <Route path="/Home" element={<Home />}/>
         <Route path="/Register" element={<Register />}/>
         <Route path="/Login" element={<Login />}/>
