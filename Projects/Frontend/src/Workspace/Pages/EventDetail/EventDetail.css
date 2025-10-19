@@ -32,7 +32,7 @@ form {
 
 .DetailBackground {
     /*背景設定*/
-    background-image: url('../../Components/Elements/ArrowVerEvents.png');
+    background-image: url('../../Components/Elements/ArrowVerEventDetail.png');
    
     /* 背景の表示方法 */
     background-size: cover;

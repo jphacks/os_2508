@@ -49,24 +49,30 @@ async function CheckOrganizer(req, res) {
 }
 
 // イベント作成ページ表示
-router.get("/AddEvent", async (req, res) => {
+router.get("/", async (req, res) => {
+    // 0. Startup Log
+    console.log("/Event/AddEvent-API is running!");
+
     // 1. CheckOrganizer
     const userId = await CheckOrganizer(req, res);
     if(!userId){
-        return;
+        return res.status(401).json({message: "You are not Organizer."});
     }
-
-    // 権限があれば成功レスポンスを返す
-    res.status(200).json({ message: "ようこそ！" });
+    
+    // 1. 画面遷移
+    return res.sendFile(path.join(__dirname, "..", "..", "..", "Frontend", "dist", "index.html"));
 });
 
 // 新規イベント登録
-router.post("/AddEvent", async (req, res) => {
+router.post("/Update", async (req, res) => {
     try {
+        // 0. Startup Log
+        console.log("/Event/AddEvent/Update-API is running!");
+
         // 1. CheckOrganizer
         const userId = await CheckOrganizer(req, res);
         if (!userId) {
-            return;
+            return res.status(401).json({message: "You are not Organizer."});
         }
 
         // 2. フロントエンドから送られてきた情報を取得 (EventIDを追加)
@@ -92,15 +98,13 @@ router.post("/AddEvent", async (req, res) => {
 
         // 6. イベント作成者を運営スタッフとしてAttendテーブルに登録
         await db.query(
-            `INSERT INTO Attend (UserID, EventID, isAttended, isStaff) VALUES (?, ?, ?, ?)`,
-            [userId, EventID, 0, 1]
+            `INSERT INTO Attend (UserID, EventID, isStaff, Status) VALUES (?, ?, ?, ?)`,
+            [userId, EventID, 1, 0]
         );
 
         // 7. 登録成功のレスポンスを返す
-        return res.status(201).json({
-            message: "新規イベントの作成が完了しました",
-            newEventId: EventID
-        });
+        console.log("新規イベントの作成が完了しました。");
+        return res.status(201).json({message: "新規イベントの作成が完了しました"});
 
     } catch (error) {
         console.error("イベント作成処理中にエラーが発生しました:", error);
@@ -109,3 +113,6 @@ router.post("/AddEvent", async (req, res) => {
 });
 
 module.exports = router;
+
+// カラムの編集
+// isStaffの登録
