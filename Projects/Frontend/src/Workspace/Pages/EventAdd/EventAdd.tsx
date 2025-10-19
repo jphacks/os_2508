@@ -40,6 +40,10 @@ function EventAdd() {
                     <p>運営連絡先</p>
                     <InputArea row={5} col={50} placeholder="運営連絡先" />
                 </div>
+                <div className="AddStaff">
+                    <p>運営スタッフ名</p>
+                    <InputArea row={5} col={50} placeholder="運営スタッフ名" />
+                </div>
                 <div className="AddButton">
                     <SeveralButton label="Save" onClick={() => alert("保存")} />
                 </div>
