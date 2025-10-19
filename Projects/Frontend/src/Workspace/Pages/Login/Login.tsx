@@ -6,23 +6,6 @@ import { useRef } from "react";
 
 
 function Login() {
-  const titleRef = useRef<HTMLInputElement>(null);
-    const handleCreate = () => {
-        const title = titleRef.current?.value || "";
-
-        fetch("/Event/Create", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify({ title })
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => {
-                console.error(err);
-                alert(`エラーが発生しました: ${err.message}`);
-            });
-    };
   return (
     <form action="/Login/Submit" method="POST">
       <div className="LoginBackground">
@@ -34,7 +17,6 @@ function Login() {
           <div className="LoginBox">
              <ConfirmButton
                             type="submit"
-                            onClick={(handleCreate)}
                             label="submit"
                         />
           </div>

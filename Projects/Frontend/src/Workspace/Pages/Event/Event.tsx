@@ -4,6 +4,7 @@ import BaseButton from "../../Components/BaseButton/BaseButton";
 import ConfirmButton from "../../Components/ConfirmButton/ConfirmButton";
 import InputField from "../../Components/InputField/InputField";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface EventData {
     EventName: string;
@@ -14,6 +15,7 @@ interface EventData {
 }
 
 function Event() {
+    const navigate = useNavigate();
     const [events, setEvents] = useState<EventData[]>([]);
     const [isOrganizer, setIsOrganizer] = useState<number>(0);
 
@@ -97,7 +99,8 @@ function Event() {
             <div className="EventAddButton">
                 <BaseButton
                     label="Add Event"
-                    onClick={() => window.location.href = "/Event/EventAdd"}
+                    onClick={() => window.location.href = "/Event/EventAdd"  }
+                    type="button"
                 />
             </div>
             <div className="EventHomeButton">
