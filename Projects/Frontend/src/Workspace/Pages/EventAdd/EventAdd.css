@@ -98,6 +98,8 @@ form {
     /*余白設定*/
     gap: 4%;
     padding-left: 85%;
+    padding-right: 3%;
+    padding-top: 1%;
 
 }
 
