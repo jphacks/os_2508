@@ -17,7 +17,7 @@ function EventManagement() {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* ここからデータをループさせる */}
+                        {/* ここからデータをループさせる この下コメントアウト*/}
                         <tr>
                             <td><input className="ManagementCheck"type="checkbox" /></td>
                             <td>Ritsumeikan</td>

@@ -55,42 +55,42 @@ function EventDetail() {
         <div className="DetailBackground">
             <div className="DetailField">
                 <div className="DetailName">
-                    {/* <p>{eventData.EventName}</p> */}
-                    <p>eventData.EventName</p>
+                    <p>{eventData.EventName}</p>
+                    {/* <p>eventData.EventName</p> */}
                 </div>
                 <div className="DetailBox">
                     <div className="DetailDetail">
                         <p>詳細</p>
-                        {/* <p>{eventData.Introduction}</p> */}
-                        <p>eventData.Introduction</p>
+                        <p>{eventData.Introduction}</p>
+                        {/* <p>eventData.Introduction</p> */}
                     </div>
                     <div className="DetailDate">
-                        {/* <p>日時: {new Date(eventData.StartDateTime).toLocaleString()} ～ {new Date(eventData.EndDateTime).toLocaleString()}</p> */}
-                        <p>日時：</p>
+                        <p>日時: {new Date(eventData.StartDateTime).toLocaleString()} ～ {new Date(eventData.EndDateTime).toLocaleString()}</p>
+                        {/* <p>日時：</p> */}
                     </div>
                     <div className="DetailFormat">
-                        {/* <p>開催形態: {eventData.Method}</p> */}
-                        <p>開催形態：</p>
+                        <p>開催形態: {eventData.Method}</p>
+                        {/* <p>開催形態：</p> */}
                     </div>
                     <div className="DetailFee">
-                        {/* <p>参加費: {eventData.EntryFee}円</p> */}
-                        <p>参加費</p>
+                        <p>参加費: {eventData.EntryFee}円</p>
+                        {/* <p>参加費</p> */}
                     </div>
                     <div className="Detaillication">
-                        {/* <p>申し込み期間: {new Date(eventData.DetaillicationLimit).toLocaleString()}</p> */}
-                        <p>申し込み期間</p>
+                        <p>申し込み期間: {new Date(eventData.DetaillicationLimit).toLocaleString()}</p>
+                        {/* <p>申し込み期間</p> */}
                     </div>
                     <div className="DetailCancel">
-                        {/* <p>キャンセル可能期間: {new Date(eventData.CancelLimit).toLocaleString()}</p> */}
+                        <p>キャンセル可能期間: {new Date(eventData.CancelLimit).toLocaleString()}</p>
+                        {/* <p>キャンセル可能期間</p>
                         <p>キャンセル可能期間</p>
                         <p>キャンセル可能期間</p>
                         <p>キャンセル可能期間</p>
-                        <p>キャンセル可能期間</p>
-                        <p>キャンセル可能期間</p>
+                        <p>キャンセル可能期間</p> */}
                     </div>
                     <div className="DetailAddress">
-                        {/* <p>運営連絡先: {eventData.Contact}</p> */}
-                        <p>運営連絡先：</p>
+                        <p>運営連絡先: {eventData.Contact}</p>
+                        {/* <p>運営連絡先：</p> */}
                     </div>
                 </div>
                     {isStaff === 1 ? (

@@ -36,7 +36,7 @@ function Event() {
                     </div>
                 </div>
                 {/* mapで表示 */}
-                {/* {events.map((event) => (
+                {events.map((event) => (
                     <EventButton
                         key={event.EventID}
                         eventName={event.EventName}
@@ -51,10 +51,10 @@ function Event() {
                         label="Add Event"
                         onClick={() => alert("Hi")}
                     />
-                )} */}
+                )}
 
 
-                <EventButton
+                {/* <EventButton
                     key="fall2025"
                     eventName="AAA"
                     eventDate={`${new Date("2025-10-10 20:00:00").toLocaleString()} ~ ${new Date("2025-10-10 20:00:00").toLocaleString()}`}
@@ -92,12 +92,12 @@ function Event() {
                     eventDate={`${new Date("2025-10-10 20:00:00").toLocaleString()} ~ ${new Date("2025-10-10 20:00:00").toLocaleString()}`}
                     eventForm={1000 + "円"} // 例
                     onClick={() => window.location.href = "/Event/fall2025"}
-                />
+                /> */}
             </div>
             <div className="EventAddButton">
                 <BaseButton
                     label="Add Event"
-                    onClick={() => alert("Hi")}
+                    onClick={ () => window.location.href = "/EventAdd" }
                 />
             </div>
             <div className="EventHomeButton">
