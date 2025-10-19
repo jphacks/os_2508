@@ -148,7 +148,7 @@ router.get("/:EventID/Application", CookieObserver(), async (req, res) => {
         // DB Log
         console.log("Attend insert into DB:", attend);
         return res.json({ isAttend: 1 });
-    } else return res.status(409).json({ message: "AttendLog data conflicted..." });
+    } else return res.status(409).json({ message: "AttendLogs data conflicted..." });
 });
 
 router.get("/:EventID/Cancel", CookieObserver(), async (req, res) => {
