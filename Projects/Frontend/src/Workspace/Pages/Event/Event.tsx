@@ -28,7 +28,7 @@ function Event() {
         <div className="EventBackground">
             <div className="EventField">
                 {/* mapで表示 */}
-                {events.map((event) => (
+                {/* {events.map((event) => (
                     <EventButton
                         key={event.EventID}
                         eventName={event.EventName}
@@ -38,13 +38,13 @@ function Event() {
                     />
 
                 ))}
-                {/* <EventButton
-                    key="fall2025"
-                    eventName="AAA"
-                    eventDate={`${new Date("2025-10-10 20:00:00").toLocaleString()} ~ ${new Date("2025-10-10 20:00:00").toLocaleString()}`}
-                    eventForm={1000 + "円"} // 例
-                    onClick={() => window.location.href = "/Event/fall2025"}
-                />
+                {isOrganizer === 1 && (
+                    <BaseButton
+                        label="Add Event"
+                        onClick={() => alert("Hi")}
+                    />
+                )} */}
+
 
                 <EventButton
                     key="fall2025"
@@ -70,24 +70,31 @@ function Event() {
                     onClick={() => window.location.href = "/Event/fall2025"}
                 />
 
-                 <EventButton
+                <EventButton
                     key="fall2025"
                     eventName="AAA"
                     eventDate={`${new Date("2025-10-10 20:00:00").toLocaleString()} ~ ${new Date("2025-10-10 20:00:00").toLocaleString()}`}
                     eventForm={1000 + "円"} // 例
                     onClick={() => window.location.href = "/Event/fall2025"}
-                /> */}
-                
+                />
+
+                <EventButton
+                    key="fall2025"
+                    eventName="AAA"
+                    eventDate={`${new Date("2025-10-10 20:00:00").toLocaleString()} ~ ${new Date("2025-10-10 20:00:00").toLocaleString()}`}
+                    eventForm={1000 + "円"} // 例
+                    onClick={() => window.location.href = "/Event/fall2025"}
+                />
             </div>
-            <div className="EventHomeButton">
-                <BaseButton label="Home" onClick={ () => window.location.href = "/Home" } type="button"/>
-            </div>
-            {isOrganizer === 1 && (
+            <div className="EventAddButton">
                 <BaseButton
                     label="Add Event"
                     onClick={() => alert("Hi")}
                 />
-            )}
+            </div>
+            <div className="EventHomeButton">
+                <BaseButton label="Home" onClick={() => window.location.href = "/Home"} type="button" />
+            </div>
         </div>
 
     );

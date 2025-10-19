@@ -30,9 +30,9 @@ form {
     width: 100%;
 }
 
-.EditBackground {
+.AddBackground {
     /*背景設定*/
-    background-image: url('../../Components/Elements/ArrowVerEventEdit.png');
+    background-image: url('../../Components/Elements/ArrowVerEventAdd.png');
 
     /* 背景の表示方法 */
     background-size: cover;
@@ -49,7 +49,7 @@ form {
     align-items: center;
 }
 
-.EditField {
+.AddField {
     /*大きさ設定*/
     height: 70%;
     width: 80%;
@@ -81,12 +81,12 @@ form {
     gap: 15%;
 }
 
-.EditAddress {
+.AddAddress {
     /*余白設定*/
     margin-bottom: 5%;
 }
 
-.EditButton {
+.AddButton {
     /*大きさ設定*/
     width: 100%;
 
@@ -101,7 +101,7 @@ form {
 
 }
 
-.EditHomeButton {
+.AddHomeButton {
     /*大きさ設定*/
     width: 100%;
 

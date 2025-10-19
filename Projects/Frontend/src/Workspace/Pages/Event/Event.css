@@ -32,7 +32,7 @@ form {
 
 .EventBackground{
     /*背景設定*/
-    background-image: url('../../Components/Elements/ArrowVerEvents.png');
+    background-image: url('../../Components/Elements/ArrowVerEvent.png');
    
     /* 背景の表示方法 */
     background-size: cover;
@@ -61,6 +61,7 @@ form {
 
     /*背景設定*/
     backdrop-filter: blur(20px);
+    border-radius: 20px;
 
     /*余白設定*/
     gap: 3%;
@@ -74,6 +75,16 @@ form {
     overflow-y: scroll; 
 }
 
+.EventAddButton{
+    /*大きさ設定*/
+    width: 100%;
+
+    /*余白設定*/
+    padding-left: 80%;
+    padding-right: 10%;
+    padding-top: 1%;
+}
+
 .EventHomeButton{
     /*大きさ設定*/
     width: 100%;
@@ -82,6 +93,7 @@ form {
     padding-right: 83%;
     padding-left: 5%;
     padding-top: 1%;
+    padding-bottom: 1%;
 
 }
 
