@@ -1,0 +1,183 @@
+#root {
+    /*大きさ設定*/
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+* {
+    /*初期設定*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+}
+
+#app-base {
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+}
+
+form {
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+}
+
+.ManagementBackground {
+    /*背景設定*/
+    background-image: url('../../Components/Elements/ArrowVerEvents.png');
+
+    /* 背景の表示方法 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /*大きさ設定*/
+    height: 100%;
+    width: 100%;
+
+    /*位置設定*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /*空白設定*/
+    padding-top: 10%;
+    gap: 2%;
+}
+
+.ManagementField {
+    /*大きさ設定*/
+    height: 70%;
+    width: 80%;
+
+    /*位置設定*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /*背景設定*/
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+
+
+    /*余白設定*/
+    padding: 2%;
+    gap: 10%;
+
+    /*文字設定*/
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 40px;
+
+    /*スクロール設定*/
+    overflow-y: scroll;
+    overflow-x: auto;
+
+}
+
+.ManagementList {
+    /*大きさ設定*/
+    width: 100%;
+
+    /*位置設定*/
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    /*背景設定*/
+    background-color: white;
+
+    /*飾り設定*/
+    border-collapse: collapse;
+    table-layout: auto;
+
+    /*余白設定*/
+    gap: 5%;
+}
+
+.ManagementList th,
+.ManagementList td,
+.ManagementTime th,
+.ManagementTime td {
+    /*位置設定*/
+    text-align: center;
+    vertical-align: middle;
+
+    /*文字設定*/
+    border: 1px solid #999;
+    word-wrap: break-word; 
+
+    /*空白設定*/
+    padding: 1%;
+}
+
+.ManagementList td:first-child,
+.ManagementTime td:first-child {
+    width: 50px;               /* 適当な幅 */
+    text-align: center;        /* 横中央 */
+    vertical-align: middle;    /* 縦中央 */
+    padding: 0;                /* チェックボックス自体に余白を付ける */
+
+    border: 1px solid #999;
+}
+
+.ManagementList td:not(:first-child),
+.ManagementTime td:not(:first-child) {
+    padding: 0.5em 1em;        /* セル内余白 */
+    word-break: break-word;     
+
+    border: 1px solid #999;
+}
+
+.ManagementTime {
+    /*大きさ設定*/
+    width: 100%;
+
+    /*位置設定*/
+    flex-direction: column;
+    align-content: center;
+
+    /*背景設定*/
+    background-color: white;
+
+    /*飾り設定*/
+    border-collapse: collapse;
+    table-layout: auto;
+
+    /*余白設定*/
+    gap: 5%;
+}
+
+.ManagementCheck {
+    /*大きさ設定*/
+    transform: scale(2.0);
+
+    /*空白設定*/
+    margin: auto;  
+    display: block; 
+    
+}
+
+.ManagementButton {
+    /*大きさ設定*/
+    width: 100%;
+}
+
+.ManagementHomeButton {
+    /*大きさ設定*/
+    width: 100%;
+
+    /*余白設定*/
+    padding-right: 85%;
+    padding-left: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+}
