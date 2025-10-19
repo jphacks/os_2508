@@ -1,19 +1,19 @@
 import './Auth.css';
 import ConfirmButton from '../../Components/ConfirmButton/ConfirmButton';
 import InputField from '../../Components/InputField/InputField';
-import React, { useState } from "react";
+import { useRef } from "react";
 
 
 function Auth() {
-    const [title, setTitle] = useState("");
-    const [date, setDate] = useState("");
-
+    const titleRef = useRef<HTMLInputElement>(null);
     const handleCreate = () => {
+        const title = titleRef.current?.value || "";
+
         fetch("/Event/Create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include",
-            body: JSON.stringify({ title, date })
+            body: JSON.stringify({ title })
         })
             .then(res => res.json())
             .then(data => console.log(data))
@@ -27,18 +27,12 @@ function Auth() {
             <div className="AuthBackground">
                 <div className="AuthBox">
                     <div className="AuthInvite">
-                        {/* <InputField name="invitedKey" type="password" placeholder="invite code" /> */}
-                        <InputField
-                            name="invitedKey"
-                            type="text"
-                            placeholder="Invite Code"
-                        />
+                        <InputField name="invitedKey" type="password" placeholder="Invite code" />
                     </div>
                     <div className="AuthSubmit">
-                        {/* <ConfirmButton type="submit" label="submit" /> */}
                         <ConfirmButton
                             type="submit"
-                            onClick={(handleCreate) }
+                            onClick={(handleCreate)}
                             label="submit"
                         />
                     </div>

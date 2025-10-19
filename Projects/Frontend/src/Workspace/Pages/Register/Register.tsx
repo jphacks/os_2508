@@ -2,8 +2,27 @@ import './Register.css';
 import ConfirmButton from "../../Components/ConfirmButton/ConfirmButton";
 import InputField from "../../Components/InputField/InputField";
 import BaseButton from "../../Components/BaseButton/BaseButton";
+import { useRef } from "react";
 
 function Register() {
+    const titleRef = useRef<HTMLInputElement>(null);
+    const handleCreate = () => {
+        const title = titleRef.current?.value || "";
+
+        fetch("/Event/Create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ title })
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => {
+                console.error(err);
+                alert(`エラーが発生しました: ${err.message}`);
+            });
+    };
+    
     return (
         <form action="/Register/Submit" method="POST">
             <div className="RegisterBackground">
@@ -24,7 +43,11 @@ function Register() {
                         <InputField name="comment" class-name="textbox" type="text" placeholder="message" />
                     </div>
                     <div className="RegisterButton">
-                        <ConfirmButton class-name="register-button" type="submit" label="register" />
+                        <ConfirmButton
+                            type="submit"
+                            onClick={(handleCreate)}
+                            label="Register"
+                        />
                     </div>
                 </div>
                 <div className="RegisterHomeButton">

@@ -1,7 +1,6 @@
 import './EventManagement.css';
 import SeveralButton from "../../Components/SeveralButton/SeveralButton";
 import BaseButton from "../../Components/BaseButton/BaseButton";
-//横を作成してそれを縦ループで作成　見出しの次からループを開始する
 
 function EventManagement() {
     return (

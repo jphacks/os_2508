@@ -72,6 +72,11 @@ form{
     /* 大きさ設定 */
     width: 60%;
     height: 20%;
+
+    /*位置設定*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .AuthSubmit{
