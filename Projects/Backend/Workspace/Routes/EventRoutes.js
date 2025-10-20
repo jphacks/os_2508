@@ -54,7 +54,7 @@ router.get("/Fetch", CookieObserver(), async (req, res) => {
 });
 
 // AddRouting
-const addRoutes = require('./EventAddRoutes');
+const addRoutes = require('./AddEventRoutes');
 router.use("/AddEvent", addRoutes);
 
 router.get("/:EventID", CookieObserver(), async (req, res) => {
@@ -199,7 +199,11 @@ router.get("/:EventID/Cancel", CookieObserver(), async (req, res) => {
 });
 
 // EditRouting
-const editRoutes = require('./EventEditRoutes');
+const editRoutes = require('./EditEventRoutes');
 router.use("/:EventID/EditEvent", editRoutes);
+
+// ManagementRouting
+const managementRoutes = require('./ManagementEventRoutes');
+router.use("/:EventID/ManagementEvent", managementRoutes);
 
 module.exports = router;

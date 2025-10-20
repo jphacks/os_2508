@@ -1,3 +1,12 @@
+/*==========Function Manual==========
+# Input
+const isOrganizer = await CheckStatus(token, "isOrganizer");
+const isStatus = await CheckStatus(token, "isStatus", EventID);
+
+# Output
+0 or 1
+==========Function Manual==========*/
+
 const jwt = require("jsonwebtoken");
 const { db } = require("./db");
 

@@ -88,7 +88,6 @@ router.get("/:EventID/Fetch", cookieObserver(), async (req, res) => {
 
 // イベント更新
 router.post("/:EventID/EventEdit", cookieObserver(), async (req, res) => {
-    const eventID = req.params.EventID;
     try {
         const EventID = req.params.EventID;
         const isStaff = await CheckStaff(req, EventID);

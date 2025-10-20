@@ -52,7 +52,7 @@ function EventAdd() {
                 <SeveralButton label="Add" onClick={() => alert("保存")} />
             </div>
             <div className="AddHomeButton">
-                <BaseButton label="Home" onClick={() => window.location.href = "/Home"} />
+                <BaseButton label="Home" onClick={() => navigate("/Home")} />
             </div>
         </div>
     );
