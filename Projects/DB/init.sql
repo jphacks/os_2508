@@ -59,3 +59,21 @@ CREATE TABLE IF NOT EXISTS Schedule (
     Content TEXT,
     FOREIGN KEY (EventID) REFERENCES Events(EventID)
 );
+
+-- ログイン試行回数（ユーザーIDごと）
+CREATE TABLE IF NOT EXISTS LoginAttempts (
+    UserID VARCHAR(50) PRIMARY KEY,
+    attemptCount INT DEFAULT 0,
+    lastAttemptAt TIMESTAMP NULL,
+    isBlocked BOOLEAN DEFAULT false,
+    blockedAt TIMESTAMP NULL,
+    FOREIGN KEY (UserID) REFERENCES Profiles(UserID) ON DELETE CASCADE
+);
+
+-- ログイン試行回数（IPアドレスごと）
+CREATE TABLE IF NOT EXISTS LoginIpAttempts (
+    AttemptID INT AUTO_INCREMENT PRIMARY KEY,
+    ip_address VARCHAR(45) NOT NULL,
+    attempt_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_ip_time (ip_address, attempt_timestamp)
+);
