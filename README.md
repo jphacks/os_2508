@@ -1,6 +1,6 @@
 # ARROW
 
-[![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2025/05/JPHACKS2025_ogp.jpg)](https://www.youtube.com/watch?v=lA9EluZugD8)
+<img width="1897" height="913" alt="image" src="https://github.com/user-attachments/assets/e948677c-3178-4c7c-8ca4-6799cdbbd5e2" />
 
 ## 製品概要
 イベントを誰もが見逃すことなく手軽に参加/運営することが出来、イベント開催にあたっての手順の多さとそれがもたらすイベント参加/運営への障壁をなくすことができるWebアプリ
