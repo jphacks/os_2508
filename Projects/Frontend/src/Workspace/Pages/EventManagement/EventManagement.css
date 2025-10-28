@@ -116,7 +116,9 @@ form {
 
     /*文字設定*/
     border: 1px solid #999;
-    word-wrap: break-word; 
+    word-wrap: break-word;
+    /*一時変更*/
+    font-size: 20px;
 
     /*空白設定*/
     padding: 1%;
