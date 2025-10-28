@@ -59,7 +59,7 @@ Json
     { "UserID": "<UserID>(string)", "EventID": "<EventID>(string)", "Status": 0 or 1, "Nickname": "<Nickname>(string)", "Graduation": <Graduation>(int), "Organization": "<Organization>(string)" }
   ],
   "Schedules": [
-    { "ScheduleID": <ScheduleID>(int), "EventID": "<EventID>(string)", "Time": "<Time>(10:00形式のstring)", "Status": 0 or 1 },
+    { "ScheduleID": <ScheduleID>(int), "EventID": "<EventID>(string)", "Date": "<Date>(10:00形式のstring)", "Time": "<Time>(10:00:00形式のstring)", "Content": "<Content>(string)", "Status": 0 or 1 },
     { "ScheduleID": <ScheduleID>(int), "EventID": "<EventID>(string)", "Time": "<Time>(10:00形式のstring)", "Status": 0 or 1 }
   ]
 }
@@ -150,6 +150,66 @@ router.post("/UpdateAttendLogs", CookieObserver(), async (req, res) => {
                 await db.query(
                     "UPDATE AttendLogs SET Status = ? WHERE UserID = ? AND EventID = ?;",
                     [attendLog.Status, UserID, EventID]
+                );
+            }
+
+            return res.status(200).json({ message: "OK: Events inserted" });
+        }
+        else return res.status(403).json({ message: "Forbidden: You are not staff." });
+    }catch(err){
+        // Verify Error Log
+        console.error("LoginToken is not verified!", err);
+        // 検証に問題があった瞬間エラー
+        return res.status(401).json({ message: "Unauthorized." });
+    }
+});
+
+/*==========API Manual(/UpdateAttendLogs)==========
+# Input
+JSON
+{
+    { ScheduleID :"<ScheduleID(string)>", EventID: "<EventID(string)>", Status: "<Status(0 or 1)>"},
+    { ScheduleID :"<ScheduleID(string)>", EventID: "<EventID(string)>", Status: "<Status(0 or 1)>"},
+    { ScheduleID :"<ScheduleID(string)>", EventID: "<EventID(string)>", Status: "<Status(0 or 1)>"}
+}
+
+# Output
+Json
+{
+    { message: "<message>" }
+}
+==========API Manual==========*/
+router.post("/UpdateSchedules", CookieObserver(), async (req, res) => {
+    // 0. Startup Log
+    console.log("/Event/:EventID/ManagementEvent/UpdateSchedules-API is running!");
+
+    // 1. EventIDを取得
+    const EventID = req.params.EventID;
+
+    // 2. Cookieから情報を取得
+    const token = req.cookies?.LoginToken;
+
+    // 3. tokenがあった場合、改ざんの形跡がないか検証
+    try {
+        // tokenの改ざんがないか検証
+        jwt.verify(token, process.env.LOGIN_SECRET);
+        // Verify Success Log
+        console.log("LoginToken is verified!");
+
+        // isStaffの取得
+        const isStaff = await CheckStatus(token, "isStaff", EventID);
+        //ユーザーがスタッフである場合の処理
+        if (isStaff === 1) {
+            const schedules = req.body;
+            if (!Array.isArray(schedules)) return res.status(400).json({ message: "Array expected" });
+
+            for (const schedule of schedules) {
+                const { ScheduleID, EventID, Status } = schedule;
+                if (!ScheduleID || !EventID || Status === undefined || Status === null) return res.status(400).json({ message: "Bad Request: 入力項目が足りません。" });;
+
+                await db.query(
+                    "UPDATE Schedules SET Status = ? WHERE ScheduleID = ? AND EventID = ?;",
+                    [schedule.Status, schedule.ScheduleID, EventID]
                 );
             }
 

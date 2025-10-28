@@ -16,7 +16,7 @@ type AttendData = {
 
 type ScheduleData = {
   ScheduleID: number;
-  EventID: string;
+  Date: string;
   Time: string;      // HH:MM形式
   Content: string;
   Status: 0 | 1;     // チェックボックス管理用
@@ -29,10 +29,9 @@ type UserData = {
 
 function EventManagement() {
   const { EventID } = useParams();
+  if (!EventID) return; // EventID がなければ処理しない
   const navigate = useNavigate();
   const [userData, setUserData] = useState<UserData | null>(null);
-  const [attendChecks, setAttendChecks] = useState<Record<string, boolean>>({});
-  const [scheduleChecks, setScheduleChecks] = useState<Record<number, boolean>>({});
 
     useEffect(() => {
         fetch(`/Event/${EventID}/ManagementEvent/Fetch`, { credentials: 'include' })
@@ -43,23 +42,63 @@ function EventManagement() {
 
     if (!userData) return <p>{userData}</p>;
 
-//     const saveAttend = () => {
-//         const body = userData.Attend.map(a => ({
-//         UserID: a.UserID,
-//         EventID: a.EventID,
-//         Status: attendChecks[a.UserID] ? 1 : 0
-//         }));
+    // AttendLogs 保存用関数
+    const updateAttendStatus = (userID: string, eventID: string, newStatus: 0 | 1) => {
+        // userData の更新
+        setUserData(prev => {
+            if (!prev) return prev;
+            const newUserData = {
+            ...prev,
+            Attend: prev.Attend.map(a =>
+                a.UserID === userID ? { ...a, Status: newStatus } : a
+            )
+            };
 
-//         fetch(`/Event/${EventID}/ManagementEvent/UpdateAttendLogs`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         credentials: 'include',
-//         body: JSON.stringify(body)
-//         })
-//         .then(res => res.json())
-//         .then(res => alert(res.message))
-//         .catch(err => console.error(err));
-//   };
+            // サーバーに即保存
+            fetch(`/Event/${eventID}/ManagementEvent/UpdateAttendLogs`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify([
+                { UserID: userID, EventID: eventID, Status: newStatus }
+            ])
+            })
+            .then(res => res.json())
+            .then(res => console.log('AttendLogs 保存完了', res))
+            .catch(err => console.error('AttendLogs 保存失敗', err));
+
+            return newUserData;
+        });
+    };
+
+    // Schedules 保存用関数
+    const updateScheduleStatus = (scheduleID: number, eventID: string, newStatus: 0 | 1) => {
+        setUserData(prev => {
+            if (!prev) return prev;
+            const newUserData = {
+            ...prev,
+            Schedules: prev.Schedules.map(a =>
+                a.ScheduleID === scheduleID ? { ...a, Status: newStatus } : a
+            )
+            };
+
+            fetch(`/Event/${eventID}/ManagementEvent/UpdateSchedules`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify([
+                { ScheduleID: scheduleID, EventID: eventID, Status: newStatus }
+            ])
+            })
+            .then(res => res.json())
+            .then(res => console.log('Schedules 保存完了', res))
+            .catch(err => console.error('Schedules 保存失敗', err));
+
+            return newUserData;
+        });
+    };
+
+
 
     return (
         <div className="ManagementBackground">
@@ -81,10 +120,8 @@ function EventManagement() {
                                 <input
                                 className="ManagementCheck"
                                 type="checkbox"
-                                checked={attendChecks[attend.UserID] || false} // Statusが1ならチェック
-                                onChange={e =>
-                                    setAttendChecks(prev => ({ ...prev, [attend.UserID]: e.target.checked }))
-                                }
+                                checked={attend.Status === 1} // Statusが1ならチェック
+                                onChange={e => updateAttendStatus(attend.UserID, attend.EventID, e.target.checked ? 1 : 0)}
                                 />
                             </td>
                             <td>{attend.Nickname}</td>
@@ -95,31 +132,41 @@ function EventManagement() {
                         ))}
                         </tbody>
                 </table>
-                <div className="ManagementButton">
+                {/* <div className="ManagementButton">
                     <SeveralButton label="Save" onClick={() => alert("保存")} />
-                </div>
+                </div> */}
             </div>
             <div className="ManagementField">
                 <table className="ManagementTime">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>time</th>
-                            <th>content</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Content</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            {/* ここからデータをループさせる */}
-                            <td><input className="ManagementCheck"type="checkbox" /></td>
-                            <td>12:00</td>
-                            <td>イベント開始</td>
+                    {userData.Schedules.map(schedule => (
+                        <tr key={schedule.ScheduleID}>
+                        <td>
+                            <input
+                            className="ManagementCheck"
+                            type="checkbox"
+                            checked={schedule.Status === 1} // Statusが1ならチェック
+                            onChange={e => updateScheduleStatus(schedule.ScheduleID, EventID, e.target.checked ? 1 : 0)}
+                            />
+                        </td>
+                        <td>{schedule.Date.split("T")[0].replace(/-/g, "/")}</td>
+                        <td>{schedule.Time}</td>
+                        <td>{schedule.Content}</td>
                         </tr>
+                    ))}
                     </tbody>
                 </table>
-                <div className="ManagementButton">
+                {/* <div className="ManagementButton">
                     <SeveralButton label="Save" onClick={() => alert("保存")} />
-                </div>
+                </div> */}
             </div>
             <div className="ManagementHomeButton">
                 <BaseButton label="Home" onClick={() => navigate("/Home") } />

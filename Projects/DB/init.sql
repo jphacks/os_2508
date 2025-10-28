@@ -51,12 +51,13 @@ CREATE TABLE IF NOT EXISTS AttendLogs (
 );
 
 -- Schedules
-CREATE TABLE IF NOT EXISTS Schedule (
+CREATE TABLE IF NOT EXISTS Schedules (
     ScheduleID INT AUTO_INCREMENT PRIMARY KEY,
     EventID VARCHAR(50) NOT NULL,
     Date DATE,
     Time TIME,
     Content TEXT,
+    Status INT,
     FOREIGN KEY (EventID) REFERENCES Events(EventID)
 );
 
